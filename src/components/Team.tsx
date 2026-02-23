@@ -6,9 +6,9 @@ import team2 from "@/assets/team-2.png";
 import team3 from "@/assets/team-3.png";
 
 const members = [
-  { name: "Valentina García", role: "Diseño & UX/UI", image: team1 },
-  { name: "Diego Hernández", role: "Marketing & Redes", image: team2 },
-  { name: "Andrés Morales", role: "Desarrollo Full-Stack", image: team3 },
+  { name: "Benjamin Costa Mihanovich", role: "CEO & Desarrollo Full-Stack", image: team1 },
+  { name: "Tobias Bonomo", role: "Diseño UX/UI & Branding", image: team2 },
+  { name: "Matias Bellinzona", role: "Marketing Digital & Estrategia", image: team3 },
 ];
 
 const Team = () => (
@@ -49,7 +49,7 @@ const Team = () => (
               <h3 className="text-lg font-semibold text-foreground">{member.name}</h3>
               <p className="mt-1 text-sm text-muted-foreground">{member.role}</p>
               <Button asChild variant="outline" size="sm" className="mt-4 group-hover:border-primary group-hover:text-primary transition-colors duration-300">
-                <a href="#" target="_blank" rel="noopener noreferrer">Ver perfil en Workana</a>
+                <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer">Ver perfil en LinkedIn</a>
               </Button>
             </motion.div>
           </ScrollReveal>

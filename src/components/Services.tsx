@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import serviceUx from "@/assets/service-ux.png";
 import serviceWeb from "@/assets/service-web.png";
 import serviceMobile from "@/assets/service-mobile.png";
+import { Search, Lightbulb, Palette, Code2, Rocket, HeartHandshake } from "lucide-react";
 
 const services = [
   {
@@ -25,6 +26,45 @@ const services = [
   },
 ];
 
+const process = [
+  {
+    icon: Search,
+    step: "01",
+    title: "Descubrimiento",
+    description: "Analizamos tu negocio, competencia y objetivos para entender exactamente qué necesitás.",
+  },
+  {
+    icon: Lightbulb,
+    step: "02",
+    title: "Estrategia",
+    description: "Definimos la arquitectura de información, tecnologías y roadmap del proyecto.",
+  },
+  {
+    icon: Palette,
+    step: "03",
+    title: "Diseño & Prototipo",
+    description: "Creamos wireframes y prototipos de alta fidelidad para validar antes de programar.",
+  },
+  {
+    icon: Code2,
+    step: "04",
+    title: "Desarrollo",
+    description: "Programamos con código limpio, optimizado y escalable usando las mejores tecnologías.",
+  },
+  {
+    icon: Rocket,
+    step: "05",
+    title: "Lanzamiento",
+    description: "Deploy en producción con testing exhaustivo, SEO técnico y auditoría de performance.",
+  },
+  {
+    icon: HeartHandshake,
+    step: "06",
+    title: "Soporte Continuo",
+    description: "Mantenimiento, actualizaciones y optimizaciones para que tu producto siga creciendo.",
+  },
+];
+
 const Services = () => (
   <section id="servicios" className="py-24 md:py-36 relative">
     {/* Decorative line */}
@@ -39,6 +79,9 @@ const Services = () => (
         <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-foreground">
           Qué hacemos
         </h2>
+        <p className="mt-4 text-muted-foreground max-w-xl">
+          Soluciones digitales end-to-end: desde la idea hasta el lanzamiento y más allá.
+        </p>
       </ScrollReveal>
 
       <div className="mt-20 grid md:grid-cols-3 gap-8 md:gap-10">
@@ -70,8 +113,53 @@ const Services = () => (
           </ScrollReveal>
         ))}
       </div>
+
+      {/* Process Section */}
+      <ScrollReveal>
+        <div className="mt-32 mb-12">
+          <div className="flex items-center gap-4 mb-4">
+            <div className="w-12 h-px bg-primary" />
+            <span className="text-xs font-medium tracking-[0.2em] uppercase text-primary">Metodología</span>
+          </div>
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-foreground">
+            Nuestro proceso
+          </h2>
+          <p className="mt-4 text-muted-foreground max-w-xl">
+            Un flujo de trabajo probado que garantiza resultados de alta calidad y entregas a tiempo.
+          </p>
+        </div>
+      </ScrollReveal>
+
+      <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+        {process.map((step, i) => (
+          <ScrollReveal key={step.step} delay={i * 0.1}>
+            <motion.div
+              className="group relative p-7 rounded-2xl border border-border bg-background hover:border-primary/40 hover:shadow-lg hover:shadow-primary/5 transition-all duration-500"
+              whileHover={{ y: -4 }}
+              transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
+            >
+              {/* Step number watermark */}
+              <span className="absolute top-5 right-6 text-5xl font-black text-border/50 select-none leading-none group-hover:text-primary/10 transition-colors duration-500">
+                {step.step}
+              </span>
+              <div className="relative z-10">
+                <div className="w-11 h-11 rounded-xl bg-primary/10 flex items-center justify-center mb-5 group-hover:bg-primary/20 transition-colors duration-300">
+                  <step.icon className="w-5 h-5 text-primary" strokeWidth={1.75} />
+                </div>
+                <h3 className="text-lg font-semibold text-foreground mb-2 group-hover:text-primary transition-colors duration-300">
+                  {step.title}
+                </h3>
+                <p className="text-sm text-muted-foreground leading-relaxed">{step.description}</p>
+              </div>
+              {/* Bottom accent */}
+              <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-primary rounded-b-2xl scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left" />
+            </motion.div>
+          </ScrollReveal>
+        ))}
+      </div>
     </div>
   </section>
 );
 
 export default Services;
+

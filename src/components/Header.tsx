@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { motion, AnimatePresence } from "framer-motion";
+import { Phone } from "lucide-react";
 
 const navItems = [
   { label: "Servicios", href: "#servicios" },
@@ -13,10 +14,21 @@ const navItems = [
 const Header = () => {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState("");
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 20);
-    window.addEventListener("scroll", onScroll);
+    const onScroll = () => {
+      setScrolled(window.scrollY > 40);
+      const sections = navItems.map((n) => n.href.replace("#", ""));
+      for (const id of [...sections].reverse()) {
+        const el = document.getElementById(id);
+        if (el && window.scrollY >= el.offsetTop - 120) {
+          setActiveSection(id);
+          break;
+        }
+      }
+    };
+    window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
@@ -24,76 +36,121 @@ const Header = () => {
     <motion.header
       initial={{ y: -20, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
-      transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-        scrolled ? "bg-background/90 backdrop-blur-xl border-b border-border/50 shadow-sm" : "bg-transparent"
-      }`}
+      transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+      className="fixed top-0 left-0 right-0 z-50"
     >
-      <div className="container mx-auto flex items-center justify-between h-16 md:h-20 px-6">
-        <a href="#" className="flex items-center gap-2 group">
-          <span className="w-9 h-9 rounded-lg bg-primary flex items-center justify-center text-primary-foreground font-bold text-sm transition-transform duration-300 group-hover:scale-110">
-            AD
-          </span>
-          <span className="text-lg font-bold tracking-tight text-foreground hidden sm:inline">
-            Agendify Design
-          </span>
-        </a>
+      {/* Top bar */}
+      <div
+        className={`transition-all duration-500 ${
+          scrolled
+            ? "bg-background/85 backdrop-blur-2xl border-b border-border/40 shadow-[0_1px_40px_rgba(0,0,0,0.06)]"
+            : "bg-transparent"
+        }`}
+      >
+        <div className="container mx-auto flex items-center justify-between h-[68px] md:h-[76px] px-6">
+          {/* Logo */}
+          <a href="#" className="flex items-center gap-3 group flex-shrink-0">
+            <div className="w-10 h-10 rounded-xl bg-white shadow-sm border border-border/30 flex items-center justify-center overflow-hidden transition-transform duration-300 group-hover:scale-105">
+              <img src="/favicon.png" alt="Agendify Design" className="w-7 h-7 object-contain" />
+            </div>
+            <span className="text-[15px] font-bold tracking-tight text-foreground hidden sm:inline">
+              Agendify Design
+            </span>
+          </a>
 
-        <nav className="hidden md:flex items-center gap-8">
-          {navItems.map((item) => (
+          {/* Floating pill nav — desktop */}
+          <nav className="hidden md:flex items-center gap-1 px-2 py-1.5 rounded-full border border-border/60 bg-background/60 backdrop-blur-xl shadow-sm">
+            {navItems.map((item) => {
+              const id = item.href.replace("#", "");
+              const isActive = activeSection === id;
+              return (
+                <a
+                  key={item.href}
+                  href={item.href}
+                  className={`relative px-4 py-1.5 rounded-full text-[13px] font-medium transition-all duration-300 ${
+                    isActive
+                      ? "bg-primary text-primary-foreground shadow-sm"
+                      : "text-muted-foreground hover:text-foreground hover:bg-secondary"
+                  }`}
+                >
+                  {item.label}
+                </a>
+              );
+            })}
+          </nav>
+
+          {/* CTA — desktop */}
+          <div className="hidden md:flex items-center gap-3">
             <a
-              key={item.href}
-              href={item.href}
-              className="relative text-sm font-medium text-muted-foreground hover:text-foreground transition-colors duration-300 after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-0.5 after:bg-primary after:transition-all after:duration-300 hover:after:w-full"
+              href="tel:+541100000000"
+              className="flex items-center gap-1.5 text-[13px] font-medium text-muted-foreground hover:text-foreground transition-colors duration-300"
             >
-              {item.label}
+              <Phone className="w-3.5 h-3.5" />
+              <span>+54 11 0000-0000</span>
             </a>
-          ))}
-        </nav>
+            <Button
+              asChild
+              size="sm"
+              className="rounded-full px-5 shadow-md shadow-primary/20 hover:shadow-primary/30 transition-all duration-300"
+            >
+              <a href="#contacto">Agendar llamada</a>
+            </Button>
+          </div>
 
-        <div className="hidden md:block">
-          <Button asChild className="shadow-lg shadow-primary/20 hover:shadow-primary/30 transition-shadow duration-300">
-            <a href="#contacto">Agendar llamada</a>
-          </Button>
+          {/* Hamburger — mobile */}
+          <button
+            className="md:hidden flex flex-col justify-center items-center w-10 h-10 gap-[5px] rounded-lg hover:bg-secondary transition-colors"
+            onClick={() => setMobileOpen(!mobileOpen)}
+            aria-label="Toggle menu"
+          >
+            <span
+              className={`block w-5 h-[2px] bg-foreground rounded-full transition-all duration-300 origin-center ${
+                mobileOpen ? "rotate-45 translate-y-[7px]" : ""
+              }`}
+            />
+            <span
+              className={`block w-5 h-[2px] bg-foreground rounded-full transition-all duration-300 ${
+                mobileOpen ? "opacity-0 scale-x-0" : ""
+              }`}
+            />
+            <span
+              className={`block w-5 h-[2px] bg-foreground rounded-full transition-all duration-300 origin-center ${
+                mobileOpen ? "-rotate-45 -translate-y-[7px]" : ""
+              }`}
+            />
+          </button>
         </div>
-
-        <button
-          className="md:hidden flex flex-col gap-1.5 p-2"
-          onClick={() => setMobileOpen(!mobileOpen)}
-          aria-label="Toggle menu"
-        >
-          <span className={`block w-6 h-0.5 bg-foreground transition-all duration-300 ${mobileOpen ? "rotate-45 translate-y-2" : ""}`} />
-          <span className={`block w-6 h-0.5 bg-foreground transition-all duration-300 ${mobileOpen ? "opacity-0" : ""}`} />
-          <span className={`block w-6 h-0.5 bg-foreground transition-all duration-300 ${mobileOpen ? "-rotate-45 -translate-y-2" : ""}`} />
-        </button>
       </div>
 
+      {/* Mobile menu */}
       <AnimatePresence>
         {mobileOpen && (
           <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: "auto" }}
-            exit={{ opacity: 0, height: 0 }}
-            transition={{ duration: 0.3, ease: "easeInOut" }}
-            className="md:hidden bg-background/95 backdrop-blur-xl border-b border-border overflow-hidden"
+            initial={{ opacity: 0, y: -8 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -8 }}
+            transition={{ duration: 0.25, ease: "easeOut" }}
+            className="md:hidden mx-4 mt-2 rounded-2xl border border-border bg-background/98 backdrop-blur-2xl shadow-xl overflow-hidden"
           >
-            <nav className="flex flex-col gap-4 px-6 pb-6 pt-2">
+            <nav className="flex flex-col p-4 gap-1">
               {navItems.map((item, i) => (
                 <motion.a
                   key={item.href}
                   href={item.href}
-                  initial={{ opacity: 0, x: -20 }}
+                  initial={{ opacity: 0, x: -12 }}
                   animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: i * 0.05 }}
-                  className="text-base font-medium text-muted-foreground hover:text-foreground transition-colors"
+                  transition={{ delay: i * 0.04 }}
+                  className="px-4 py-3 rounded-xl text-sm font-medium text-muted-foreground hover:text-foreground hover:bg-secondary transition-all duration-200"
                   onClick={() => setMobileOpen(false)}
                 >
                   {item.label}
                 </motion.a>
               ))}
-              <Button asChild className="mt-2 w-full">
-                <a href="#contacto" onClick={() => setMobileOpen(false)}>Agendar llamada</a>
-              </Button>
+              <div className="mt-2 pt-3 border-t border-border">
+                <Button asChild className="w-full rounded-xl">
+                  <a href="#contacto" onClick={() => setMobileOpen(false)}>Agendar llamada</a>
+                </Button>
+              </div>
             </nav>
           </motion.div>
         )}

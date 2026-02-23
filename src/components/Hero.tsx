@@ -110,15 +110,11 @@ const Hero = () => (
         animate={{ opacity: 1, x: 0 }}
         transition={{ duration: 1, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
       >
-        <motion.div
-          className="absolute -inset-4 bg-gradient-to-br from-primary/5 via-transparent to-primary/10 rounded-2xl blur-2xl"
-          animate={{ opacity: [0.5, 0.8, 0.5] }}
-          transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-        />
         <img
           src={heroMockup}
           alt="Dashboard profesional en laptop y móvil"
-          className="relative w-full max-w-lg mx-auto drop-shadow-2xl"
+          className="relative w-full md:max-w-none lg:scale-110 xl:scale-125 mx-auto origin-center"
+          style={{ filter: "none" }}
           loading="eager"
         />
       </motion.div>
