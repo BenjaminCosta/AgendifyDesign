@@ -14,7 +14,10 @@ export default {
     },
     extend: {
       fontFamily: {
-        sans: ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
+        sans: ['Manrope', 'system-ui', '-apple-system', 'sans-serif'],
+        headline: ['Manrope', 'system-ui', 'sans-serif'],
+        body: ['Manrope', 'system-ui', 'sans-serif'],
+        label: ['Space Grotesk', 'system-ui', 'sans-serif'],
       },
       colors: {
         border: "hsl(var(--border))",
@@ -60,11 +63,28 @@ export default {
           border: "hsl(var(--sidebar-border))",
           ring: "hsl(var(--sidebar-ring))",
         },
+        // Dark editorial design tokens
+        "surface-container": "#201f1f",
+        "surface-container-lowest": "#0e0e0e",
+        "surface-container-low": "#1c1b1b",
+        "surface-container-high": "#2a2a2a",
+        "on-surface": "#e5e2e1",
+        "on-surface-variant": "#bbcabf",
+        "outline-variant": "#3c4a42",
+        "primary-container": "#10b981",
+        "on-primary": "#003824",
+        "surface-variant": "#353534",
       },
       borderRadius: {
-        lg: "var(--radius)",
-        md: "calc(var(--radius) - 2px)",
-        sm: "calc(var(--radius) - 4px)",
+        DEFAULT: "0px",
+        none: "0px",
+        sm: "0px",
+        md: "0px",
+        lg: "0px",
+        xl: "0px",
+        "2xl": "0px",
+        "3xl": "0px",
+        full: "9999px",
       },
       keyframes: {
         "accordion-down": {

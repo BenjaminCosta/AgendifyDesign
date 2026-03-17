@@ -1,9 +1,7 @@
-import ScrollReveal from "./ScrollReveal";
-import { motion } from "framer-motion";
-import { Button } from "@/components/ui/button";
 import team1 from "@/assets/team-1.png";
 import team2 from "@/assets/team-2.png";
 import team3 from "@/assets/team-3.png";
+import { homeContent } from "@/content/home";
 
 const members = [
   { name: "Benjamin Costa Mihanovich", role: "CEO & Desarrollo Full-Stack", image: team1 },
@@ -12,47 +10,37 @@ const members = [
 ];
 
 const Team = () => (
-  <section id="equipo" className="py-24 md:py-36 bg-secondary relative overflow-hidden">
-    {/* Decorative elements */}
-    <div className="absolute top-0 right-0 w-96 h-96 rounded-full border border-border/30 -translate-y-1/2 translate-x-1/2" />
-    <div className="absolute bottom-0 left-0 w-64 h-64 rounded-full border border-primary/10 translate-y-1/2 -translate-x-1/2" />
-
-    <div className="container mx-auto px-6 relative z-10">
-      <ScrollReveal>
-        <div className="flex items-center gap-4 mb-4">
-          <div className="w-12 h-px bg-primary" />
-          <span className="text-xs font-medium tracking-[0.2em] uppercase text-primary">Nosotros</span>
+  <section className="py-32 bg-background" id="equipo">
+    <div className="container mx-auto px-6">
+      <div className="flex flex-col md:flex-row justify-between items-end mb-24 gap-8">
+        <div className="max-w-xl">
+          <h2 className="text-5xl font-extrabold font-headline tracking-tighter mb-6 uppercase">
+            EL <span className="text-primary">EQUIPO</span>
+          </h2>
+          <p className="text-foreground/60 font-light">{homeContent.team.subtitle}</p>
         </div>
-        <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-foreground">
-          Equipo
-        </h2>
-        <p className="mt-4 text-muted-foreground max-w-md">Profesionales apasionados por crear experiencias digitales excepcionales.</p>
-      </ScrollReveal>
+        <p className="text-foreground/40 font-label text-xs uppercase tracking-widest">FUNDADORES</p>
+      </div>
 
-      <div className="mt-16 grid sm:grid-cols-3 gap-8 md:gap-12">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-0">
         {members.map((member, i) => (
-          <ScrollReveal key={member.name} delay={i * 0.15}>
-            <motion.div
-              className="text-center group"
-              whileHover={{ y: -6 }}
-              transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
-            >
-              <div className="relative overflow-hidden rounded-2xl mb-6">
-                <img
-                  src={member.image}
-                  alt={member.name}
-                  className="w-full aspect-square object-cover transition-transform duration-700 group-hover:scale-105"
-                  loading="lazy"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-foreground/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-              </div>
-              <h3 className="text-lg font-semibold text-foreground">{member.name}</h3>
-              <p className="mt-1 text-sm text-muted-foreground">{member.role}</p>
-              <Button asChild variant="outline" size="sm" className="mt-4 group-hover:border-primary group-hover:text-primary transition-colors duration-300">
-                <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer">Ver perfil en LinkedIn</a>
-              </Button>
-            </motion.div>
-          </ScrollReveal>
+          <div
+            key={member.name}
+            className={`group border border-outline-variant/10 p-12 hover:bg-surface-container transition-all duration-500 ${
+              i === 1 ? "md:border-y-0 md:border-x bg-surface-container/30" : ""
+            }`}
+          >
+            <div className="mb-10 relative overflow-hidden aspect-square bg-surface-variant">
+              <img
+                className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 group-hover:scale-110"
+                src={member.image}
+                alt={member.name}
+                loading="lazy"
+              />
+            </div>
+            <h4 className="text-2xl font-bold font-headline uppercase mb-2">{member.name}</h4>
+            <p className="font-label text-primary text-[10px] tracking-[0.3em] uppercase">{member.role}</p>
+          </div>
         ))}
       </div>
     </div>

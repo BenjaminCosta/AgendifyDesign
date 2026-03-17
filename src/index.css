@@ -1,49 +1,47 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 0 0% 0%;
+    --background: 0 0% 7.5%;
+    --foreground: 30 6% 89%;
 
-    --card: 0 0% 100%;
-    --card-foreground: 0 0% 0%;
+    --card: 0 1% 12%;
+    --card-foreground: 30 6% 89%;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 0 0% 0%;
+    --popover: 0 1% 12%;
+    --popover-foreground: 30 6% 89%;
 
-    --primary: 160 84% 39%;
-    --primary-foreground: 0 0% 100%;
+    --primary: 155 68% 59%;
+    --primary-foreground: 155 100% 11%;
 
-    --secondary: 0 0% 96%;
-    --secondary-foreground: 0 0% 0%;
+    --secondary: 0 1% 12%;
+    --secondary-foreground: 30 6% 89%;
 
-    --muted: 0 0% 96%;
-    --muted-foreground: 0 0% 45%;
+    --muted: 0 1% 14%;
+    --muted-foreground: 140 8% 75%;
 
-    --accent: 0 0% 96%;
-    --accent-foreground: 0 0% 0%;
+    --accent: 0 1% 16%;
+    --accent-foreground: 30 6% 89%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 0 0% 90%;
-    --input: 0 0% 90%;
-    --ring: 160 84% 39%;
+    --border: 152 12% 26%;
+    --input: 152 12% 26%;
+    --ring: 155 68% 59%;
 
-    --radius: 0.5rem;
+    --radius: 0rem;
 
-    --sidebar-background: 0 0% 98%;
-    --sidebar-foreground: 0 0% 15%;
-    --sidebar-primary: 0 0% 10%;
-    --sidebar-primary-foreground: 0 0% 98%;
-    --sidebar-accent: 0 0% 96%;
-    --sidebar-accent-foreground: 0 0% 10%;
-    --sidebar-border: 0 0% 91%;
-    --sidebar-ring: 160 84% 39%;
+    --sidebar-background: 0 0% 6%;
+    --sidebar-foreground: 30 6% 89%;
+    --sidebar-primary: 155 68% 59%;
+    --sidebar-primary-foreground: 155 100% 11%;
+    --sidebar-accent: 0 1% 16%;
+    --sidebar-accent-foreground: 30 6% 89%;
+    --sidebar-border: 152 12% 26%;
+    --sidebar-ring: 155 68% 59%;
   }
 }
 
@@ -57,15 +55,154 @@
   }
 
   body {
-    @apply bg-background text-foreground font-sans antialiased;
-    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    @apply bg-background text-foreground antialiased;
+    font-family: 'Manrope', system-ui, -apple-system, sans-serif;
   }
+
+  ::-webkit-scrollbar { width: 4px; }
+  ::-webkit-scrollbar-track { background: #131313; }
+  ::-webkit-scrollbar-thumb { background: #4edea3; }
 }
 
 @layer utilities {
   .text-balance {
     text-wrap: balance;
   }
+
+  .text-outline {
+    -webkit-text-stroke: 1px rgba(229, 226, 225, 0.3);
+    color: transparent;
+  }
+}
+
+/* ── Rotating Gradient Border Button ── */
+@property --r {
+  syntax: '<angle>';
+  initial-value: 0deg;
+  inherits: false;
+}
+
+@keyframes rotate-gradient {
+  to { --r: 360deg; }
+}
+
+.rotatingGradient {
+  --color-background: #131313;
+  --color-text: #4edea3;
+  background: conic-gradient(
+    from var(--r) at 50% 50%,
+    #4edea3 0deg,
+    #10b981 60deg,
+    #131313 120deg,
+    #131313 240deg,
+    #10b981 300deg,
+    #4edea3 360deg
+  );
+  animation: rotate-gradient 2.5s linear infinite;
+}
+
+.rotatingGradient:hover {
+  --color-text: #003824;
+  animation-duration: 1.5s;
+}
+
+/* ── Gradient Button (CSS Houdini custom properties) ── */
+@property --pos-x { syntax: '<percentage>'; initial-value: 11.14%; inherits: false; }
+@property --pos-y { syntax: '<percentage>'; initial-value: 140%; inherits: false; }
+@property --spread-x { syntax: '<percentage>'; initial-value: 150%; inherits: false; }
+@property --spread-y { syntax: '<percentage>'; initial-value: 180.06%; inherits: false; }
+@property --color-1 { syntax: '<color>'; initial-value: #000; inherits: false; }
+@property --color-2 { syntax: '<color>'; initial-value: #002913; inherits: false; }
+@property --color-3 { syntax: '<color>'; initial-value: #005236; inherits: false; }
+@property --color-4 { syntax: '<color>'; initial-value: #10b981; inherits: false; }
+@property --color-5 { syntax: '<color>'; initial-value: #4edea3; inherits: false; }
+@property --border-angle { syntax: '<angle>'; initial-value: 20deg; inherits: true; }
+@property --border-color-1 { syntax: '<color>'; initial-value: hsla(155, 75%, 60%, 0.2); inherits: true; }
+@property --border-color-2 { syntax: '<color>'; initial-value: hsla(155, 75%, 40%, 0.75); inherits: true; }
+@property --stop-1 { syntax: '<percentage>'; initial-value: 37.35%; inherits: false; }
+@property --stop-2 { syntax: '<percentage>'; initial-value: 61.36%; inherits: false; }
+@property --stop-3 { syntax: '<percentage>'; initial-value: 78.42%; inherits: false; }
+@property --stop-4 { syntax: '<percentage>'; initial-value: 89.52%; inherits: false; }
+@property --stop-5 { syntax: '<percentage>'; initial-value: 100%; inherits: false; }
+
+.gradient-button {
+  position: relative;
+  appearance: none;
+  cursor: pointer;
+  background: radial-gradient(
+    var(--spread-x) var(--spread-y) at var(--pos-x) var(--pos-y),
+    var(--color-1) var(--stop-1),
+    var(--color-2) var(--stop-2),
+    var(--color-3) var(--stop-3),
+    var(--color-4) var(--stop-4),
+    var(--color-5) var(--stop-5)
+  );
+  transition:
+    --pos-x 0.5s, --pos-y 0.5s, --spread-x 0.5s, --spread-y 0.5s,
+    --color-1 0.5s, --color-2 0.5s, --color-3 0.5s, --color-4 0.5s, --color-5 0.5s,
+    --border-angle 0.5s, --border-color-1 0.5s, --border-color-2 0.5s,
+    --stop-1 0.5s, --stop-2 0.5s, --stop-3 0.5s, --stop-4 0.5s, --stop-5 0.5s;
+}
+
+.gradient-button::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  padding: 1px;
+  background: linear-gradient(var(--border-angle), var(--border-color-1), var(--border-color-2));
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+  pointer-events: none;
+}
+
+.gradient-button:hover {
+  --pos-x: 0%;
+  --pos-y: 91.51%;
+  --spread-x: 120.24%;
+  --spread-y: 103.18%;
+  --color-1: #4edea3;
+  --color-2: #10b981;
+  --color-3: #005236;
+  --color-4: #002913;
+  --color-5: #000;
+  --border-angle: 190deg;
+  --border-color-1: hsla(155, 78%, 90%, 0.1);
+  --border-color-2: hsla(155, 75%, 90%, 0.6);
+  --stop-1: 0%;
+  --stop-2: 8.8%;
+  --stop-3: 21.44%;
+  --stop-4: 71.34%;
+  --stop-5: 85.76%;
+}
+
+.gradient-button-variant {
+  --color-1: #000022;
+  --color-2: #003824;
+  --color-3: #10b981;
+  --color-4: #4edea3;
+  --border-angle: 200deg;
+  --border-color-1: hsla(155, 75%, 90%, 0.6);
+  --border-color-2: hsla(155, 50%, 90%, 0.15);
+}
+
+.gradient-button-variant:hover {
+  --pos-x: 0%;
+  --pos-y: 95.51%;
+  --spread-x: 110.24%;
+  --spread-y: 110.2%;
+  --color-1: #000020;
+  --color-2: #4edea3;
+  --color-3: #10b981;
+  --color-4: #003824;
+  --color-5: #000;
+  --stop-1: 0%;
+  --stop-2: 10%;
+  --stop-3: 35.44%;
+  --stop-4: 71.34%;
+  --stop-5: 90.76%;
+  --border-angle: 210deg;
+  --border-color-1: hsla(155, 75%, 90%, 0.2);
+  --border-color-2: hsla(155, 50%, 60%, 0.6);
 }
 
 /* Infinite scroll animation for brand carousel */
