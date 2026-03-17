@@ -85,8 +85,8 @@ const Reviews = () => (
       {/* Review cards */}
       <div className="grid md:grid-cols-3 gap-6">
         {reviews.map((review, i) => (
-          <ScrollReveal key={review.name} delay={i * 0.12}>
-            <div className="group flex flex-col gap-4 p-6 border border-border bg-card hover:border-primary/30 transition-all duration-500 hover:shadow-xl hover:shadow-primary/5">
+          <ScrollReveal key={review.name} delay={i * 0.12} className="h-full">
+            <div className="group h-full flex flex-col gap-4 p-6 border border-border bg-card hover:border-primary/30 transition-all duration-500 hover:shadow-xl hover:shadow-primary/5">
               {/* Card top: avatar + name + Google logo */}
               <div className="flex items-start justify-between">
                 <div className="flex items-center gap-3">

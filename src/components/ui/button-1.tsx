@@ -15,6 +15,7 @@ const RotatingBorderButton = ({
   height = "64px",
   className = "",
   disabled = false,
+  style,
   ...props
 }: RotatingBorderButtonProps) => {
   return (
@@ -35,6 +36,7 @@ const RotatingBorderButton = ({
         "--r": "0deg",
         minWidth: width,
         height,
+        ...style,
       } as React.CSSProperties}
       {...props}
     >

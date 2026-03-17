@@ -56,7 +56,16 @@ const Hero = () => (
           <RotatingBorderButton
             href={homeContent.hero.secondaryCta.href}
             height="56px"
-            style={{ "--color-background": "#131313", "--color-text": "#e5e2e1" } as React.CSSProperties}
+            style={
+              {
+                "--color-background": "#131313",
+                "--color-text": "#e5e2e1",
+                "--color-text-hover": "#e5e2e1",
+                "--border-accent-1": "rgba(255, 255, 255, 0.95)",
+                "--border-accent-2": "rgba(255, 255, 255, 0.45)",
+                "--border-surface": "#131313",
+              } as React.CSSProperties
+            }
           >
             {homeContent.hero.secondaryCta.label}
           </RotatingBorderButton>

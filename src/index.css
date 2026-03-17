@@ -89,20 +89,24 @@
 .rotatingGradient {
   --color-background: #131313;
   --color-text: #4edea3;
+  --color-text-hover: #003824;
+  --border-accent-1: #4edea3;
+  --border-accent-2: #10b981;
+  --border-surface: #131313;
   background: conic-gradient(
     from var(--r) at 50% 50%,
-    #4edea3 0deg,
-    #10b981 60deg,
-    #131313 120deg,
-    #131313 240deg,
-    #10b981 300deg,
-    #4edea3 360deg
+    var(--border-accent-1) 0deg,
+    var(--border-accent-2) 60deg,
+    var(--border-surface) 120deg,
+    var(--border-surface) 240deg,
+    var(--border-accent-2) 300deg,
+    var(--border-accent-1) 360deg
   );
   animation: rotate-gradient 2.5s linear infinite;
 }
 
 .rotatingGradient:hover {
-  --color-text: #003824;
+  --color-text: var(--color-text-hover);
   animation-duration: 1.5s;
 }
 
