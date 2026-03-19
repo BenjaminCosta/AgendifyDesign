@@ -37,7 +37,7 @@ const CTASection = () => {
               ))}
             </div>
             <div className="mt-16 space-y-4 font-label uppercase tracking-widest text-xs opacity-50">
-              <p>hola@agendifydesign.com</p>
+              <p>agendify.business@gmail.com</p>
               <p>Buenos Aires / Madrid / Global</p>
             </div>
           </div>

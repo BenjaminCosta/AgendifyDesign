@@ -7,21 +7,21 @@ import { homeContent } from "@/content/home";
 const members = [
   {
     name: "Benjamin Costa Mihanovich",
-    role: "CEO & Desarrollo Full-Stack",
+    role: "Diseño UX/UI & Producto",
     image: team1,
-    workana: "https://www.workana.com/freelancer/367d2b3ca0b4e2c21565ffd02193091f",
-  },
-  {
-    name: "Tobias Bonomo",
-    role: "Diseño UX/UI & Branding",
-    image: team2,
     workana: "https://www.workana.com/freelancer/6525bdbaa3b696218eb9e38608f3ea03",
   },
   {
-    name: "Matias Bellinzona",
-    role: "Marketing Digital & Estrategia",
-    image: team3,
+    name: "Tobias Bonomo",
+    role: "Desarrollo Full-Stack & Arquitectura",
+    image: team2,
     workana: "https://www.workana.com/freelancer/e45ac26bd141723720414cf2513d2a8f",
+  },
+  {
+    name: "Matias Bellinzona",
+    role: "Estrategia Digital & Growth",
+    image: team3,
+    workana: "https://www.workana.com/freelancer/367d2b3ca0b4e2c21565ffd02193091f",
   },
 ];
 

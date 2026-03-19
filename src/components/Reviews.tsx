@@ -51,7 +51,7 @@ const reviews: Review[] = [
     text: "Benjamín ha sido de gran ayuda para hacer la web de mi consultoría. Le estoy muy agradecido por el trato y el trabajo realizado. Sin lugar a dudas, recomiendo que cualquier persona que lo necesite lo contrate porque quedará absolutamente satisfecho con la labor de Benjamín.",
     tags: ["HTML", "WordPress", "Responsive Web Design", "Diseño Web"],
     freelancerName: "Benjamín Costa",
-    profileUrl: "https://www.workana.com/freelancer/367d2b3ca0b4e2c21565ffd02193091f",
+    profileUrl: "https://www.workana.com/freelancer/6525bdbaa3b696218eb9e38608f3ea03",
   },
   {
     projectTitle: "Desarrollo de Tienda Shopify para Dropshipping con Best Buy",
@@ -63,7 +63,7 @@ const reviews: Review[] = [
     text: "Lo recomiendo 1000%; siempre estuvo dispuesto a ayudar más de lo que se había propuesto. Solventó problemas que no eran nada fáciles y lo hizo muy rápido. Tuvo una paciencia increíble conmigo, estoy encantada con su trabajo, lo recomiendo y de seguro haré muchos más trabajos con él.",
     tags: ["Shopify", "HTML", "CSS", "JavaScript", "API", "Content Management System", "Responsive Web Design"],
     freelancerName: "Benjamín Costa",
-    profileUrl: "https://www.workana.com/freelancer/367d2b3ca0b4e2c21565ffd02193091f",
+    profileUrl: "https://www.workana.com/freelancer/6525bdbaa3b696218eb9e38608f3ea03",
   },
   {
     projectTitle: "Diseño y Desarrollo Web One Page Responsivo para Atria One Seguros con Integración Zoho CRM",
@@ -75,7 +75,7 @@ const reviews: Review[] = [
     text: "Excelente experiencia trabajar con Tobías, comunicación rápida, fácil y directa. Siempre disponible para ayudar durante el proyecto. Hace seguimiento al avance del proyecto en forma proactiva y presta apoyo post producción. Todo Ok!",
     tags: ["HTML5", "CSS", "JavaScript", "Git", "Zoho CRM", "Responsive Web Design", "HTML"],
     freelancerName: "Tobías Bonomo",
-    profileUrl: "https://www.workana.com/freelancer/6525bdbaa3b696218eb9e38608f3ea03",
+    profileUrl: "https://www.workana.com/freelancer/e45ac26bd141723720414cf2513d2a8f",
   },
   {
     projectTitle: "Activación segura por QR + perfil editable para mascotas (WordPress)",
@@ -87,7 +87,7 @@ const reviews: Review[] = [
     text: "Excelente trabajo. Tobías fue muy claro, ordenado y profesional durante todo el proyecto. Cumplió con lo acordado, tuvo muy buena disposición para realizar ajustes, explicó bien el funcionamiento del plugin y mantuvo una comunicación constante y transparente.\n\nEl resultado final quedó muy bien y acorde a lo solicitado. Sin duda volvería a trabajar con él y lo recomiendo totalmente.",
     tags: ["WordPress", "PHP", "MySQL", "JavaScript", "HTML", "CSS", "API", "Internet Security"],
     freelancerName: "Tobías Bonomo",
-    profileUrl: "https://www.workana.com/freelancer/6525bdbaa3b696218eb9e38608f3ea03",
+    profileUrl: "https://www.workana.com/freelancer/e45ac26bd141723720414cf2513d2a8f",
   },
   {
     projectTitle: "Desarrollo backend para plataforma web de reservas de cancha de fútbol",
@@ -99,7 +99,7 @@ const reviews: Review[] = [
     text: "Mateo ha echo un excelente trabajo, se nota su responsabilidad y profesionalismo. Ha despejado todas mis dudas y me ayudó en cosas que no entendía siendo muy claro. Superó mis expectativas, volvería a trabajar con él.",
     tags: ["JavaScript", "MySQL", "PHP", "API", "CSS", "HTML", "Python", "Responsive Web Design"],
     freelancerName: "Matías Bellinzona",
-    profileUrl: "https://www.workana.com/freelancer/e45ac26bd141723720414cf2513d2a8f",
+    profileUrl: "https://www.workana.com/freelancer/367d2b3ca0b4e2c21565ffd02193091f",
   },
   {
     projectTitle: "Desarrollo a la medida",
@@ -111,7 +111,7 @@ const reviews: Review[] = [
     text: "Entiende rápido el proceso o lo que se le explica, tiene una buena actitud, es excelente programando.\nNosotros lo recomendaríamos.",
     tags: ["JavaScript", "API", "Node.js", "Docker"],
     freelancerName: "Matías Bellinzona",
-    profileUrl: "https://www.workana.com/freelancer/e45ac26bd141723720414cf2513d2a8f",
+    profileUrl: "https://www.workana.com/freelancer/367d2b3ca0b4e2c21565ffd02193091f",
   },
 ];
 

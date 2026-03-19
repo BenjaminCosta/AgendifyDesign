@@ -38,7 +38,7 @@ const Header = () => {
 
         {/* Logo */}
         <a href="#" className="text-xl font-extrabold tracking-tighter text-primary italic font-headline uppercase flex-shrink-0">
-          AGF Design
+          Agendify Design
         </a>
 
         {/* Desktop — Tubelight nav */}

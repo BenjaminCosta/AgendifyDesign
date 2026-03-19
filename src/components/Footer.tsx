@@ -34,7 +34,7 @@ const footerLinkGroups = [
   {
     label: "Contacto",
     links: [
-      { title: "hola@agendifydesign.com", href: "mailto:hola@agendifydesign.com" },
+      { title: "agendify.business@gmail.com", href: "mailto:agendify.business@gmail.com" },
       { title: "Buenos Aires", href: "#" },
       { title: "Madrid", href: "#" },
       { title: "Iniciar proyecto", href: "#contacto" },
@@ -94,7 +94,7 @@ const Footer = () => (
             {/* Brand */}
             <AnimatedContainer className="w-full max-w-xs space-y-4">
               <span className="text-2xl font-black font-headline tracking-tighter italic text-primary block">
-                AGF 
+                Agendify Design
               </span>
               <p className="text-foreground/40 text-xs font-label leading-relaxed">
                 {homeContent.footer.tagline}
@@ -149,7 +149,7 @@ const Footer = () => (
           {/* Bottom bar */}
           <div className="relative z-10 flex flex-col items-center justify-between gap-2 border-t border-outline-variant/10 pt-3 text-[10px] font-label text-foreground/30 uppercase tracking-widest md:flex-row">
             <p>© 2026 Agendify Design — Diseño y desarrollo que genera resultados.</p>
-            <p>Buenos Aires / Madrid / Global</p>
+            <p>Buenos Aires / Global</p>
           </div>
         </div>
       </div>
