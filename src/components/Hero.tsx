@@ -32,11 +32,11 @@ const Hero = () => (
 
     {/* Floating geometric shapes */}
     <div className="absolute inset-0 overflow-hidden pointer-events-none z-[1]">
-      <ElegantShape delay={0.3} width={600} height={140} rotate={12}  gradient="from-primary/[0.12]" className="left-[-10%] md:left-[-5%] top-[15%] md:top-[20%]" />
-      <ElegantShape delay={0.5} width={500} height={120} rotate={-15} gradient="from-primary/[0.08]" className="right-[-5%] md:right-[0%] top-[60%] md:top-[65%]" />
-      <ElegantShape delay={0.4} width={300} height={80}  rotate={-8}  gradient="from-primary/[0.10]" className="left-[5%] md:left-[10%] bottom-[8%] md:bottom-[12%]" />
-      <ElegantShape delay={0.6} width={200} height={60}  rotate={20}  gradient="from-primary/[0.06]" className="right-[15%] md:right-[20%] top-[8%] md:top-[12%]" />
-      <ElegantShape delay={0.7} width={150} height={40}  rotate={-25} gradient="from-primary/[0.08]" className="left-[20%] md:left-[25%] top-[5%] md:top-[8%]" />
+      <ElegantShape delay={0.3} width={600} mobileWidth={360} height={140} mobileHeight={92} rotate={12}  gradient="from-primary/[0.12]" className="left-[-10%] md:left-[-5%] top-[15%] md:top-[20%]" />
+      <ElegantShape delay={0.5} width={500} mobileWidth={300} height={120} mobileHeight={78} rotate={-15} gradient="from-primary/[0.08]" className="right-[-5%] md:right-[0%] top-[60%] md:top-[65%]" />
+      <ElegantShape delay={0.4} width={300} mobileWidth={190} height={80}  mobileHeight={54} rotate={-8}  gradient="from-primary/[0.10]" className="left-[5%] md:left-[10%] bottom-[8%] md:bottom-[12%]" />
+      <ElegantShape delay={0.6} width={200} mobileWidth={132} height={60}  mobileHeight={42} rotate={20}  gradient="from-primary/[0.06]" className="right-[15%] md:right-[20%] top-[8%] md:top-[12%]" />
+      <ElegantShape delay={0.7} width={150} mobileWidth={104} height={40}  mobileHeight={28} rotate={-25} gradient="from-primary/[0.08]" className="left-[20%] md:left-[25%] top-[5%] md:top-[8%]" />
     </div>
 
     {/* Bottom / top fades */}
