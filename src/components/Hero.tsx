@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { homeContent } from "@/content/home";
 import RotatingBorderButton from "@/components/ui/button-1";
 import { ElegantShape } from "@/components/ui/shape-landing-hero";
+import heroBg from "@/assets/hero2.avif";
 
 const ease = [0.25, 0.4, 0.25, 1] as [number, number, number, number];
 
@@ -14,11 +15,23 @@ const fp = (i: number) => ({
 const Hero = () => (
   <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-background" id="hero">
 
+    {/* Background image */}
+    <div className="absolute inset-0 z-0">
+      <img
+        src={heroBg}
+        alt=""
+        aria-hidden="true"
+        className="w-full h-full object-cover opacity-40"
+      />
+      <div className="absolute inset-0 bg-gradient-to-r from-background/90 via-background/82 to-background/55" />
+      <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-transparent to-background/60" />
+    </div>
+
     {/* Subtle radial glow */}
-    <div className="absolute inset-0 bg-gradient-to-br from-primary/[0.04] via-transparent to-primary/[0.03] blur-3xl pointer-events-none" />
+    <div className="absolute inset-0 bg-gradient-to-br from-primary/[0.04] via-transparent to-primary/[0.03] blur-3xl pointer-events-none z-[1]" />
 
     {/* Floating geometric shapes */}
-    <div className="absolute inset-0 overflow-hidden pointer-events-none">
+    <div className="absolute inset-0 overflow-hidden pointer-events-none z-[1]">
       <ElegantShape delay={0.3} width={600} height={140} rotate={12}  gradient="from-primary/[0.12]" className="left-[-10%] md:left-[-5%] top-[15%] md:top-[20%]" />
       <ElegantShape delay={0.5} width={500} height={120} rotate={-15} gradient="from-primary/[0.08]" className="right-[-5%] md:right-[0%] top-[60%] md:top-[65%]" />
       <ElegantShape delay={0.4} width={300} height={80}  rotate={-8}  gradient="from-primary/[0.10]" className="left-[5%] md:left-[10%] bottom-[8%] md:bottom-[12%]" />

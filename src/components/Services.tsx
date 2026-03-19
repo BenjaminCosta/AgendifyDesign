@@ -1,5 +1,5 @@
-import serviceUx from "@/assets/service-ux.png";
-import serviceWeb from "@/assets/service-web.png";
+import uxImage from "@/assets/ux.jpg";
+import webDesignImage from "@/assets/web-design.jpg";
 import serviceMobile from "@/assets/service-mobile.png";
 import { homeContent } from "@/content/home";
 import { MethodologyHoverSection } from "@/components/ui/feature-hover-section";
@@ -8,13 +8,13 @@ const services = [
   {
     title: homeContent.services.items[0].title,
     description: homeContent.services.items[0].description,
-    image: serviceUx,
+    image: uxImage,
     number: "01",
   },
   {
     title: homeContent.services.items[1].title,
     description: homeContent.services.items[1].description,
-    image: serviceWeb,
+    image: webDesignImage,
     number: "02",
   },
   {
@@ -49,7 +49,7 @@ const Services = () => (
             style={{ height: "600px" }}
           >
             <img
-              className="absolute inset-0 w-full h-full object-cover scale-110 group-hover:scale-100 transition-transform duration-1000 opacity-40 grayscale group-hover:grayscale-0"
+              className="absolute inset-0 w-full h-full object-cover scale-110 group-hover:scale-100 transition-transform duration-1000 opacity-40"
               src={services[0].image}
               alt={services[0].title}
             />
@@ -70,7 +70,7 @@ const Services = () => (
             style={{ height: "700px" }}
           >
             <img
-              className="absolute inset-0 w-full h-full object-cover scale-110 group-hover:scale-100 transition-transform duration-1000 opacity-40 grayscale group-hover:grayscale-0"
+              className="absolute inset-0 w-full h-full object-cover scale-110 group-hover:scale-100 transition-transform duration-1000 opacity-40"
               src={services[1].image}
               alt={services[1].title}
             />
@@ -91,7 +91,7 @@ const Services = () => (
             style={{ height: "600px" }}
           >
             <img
-              className="absolute inset-0 w-full h-full object-cover scale-110 group-hover:scale-100 transition-transform duration-1000 opacity-40 grayscale group-hover:grayscale-0"
+              className="absolute inset-0 w-full h-full object-cover scale-110 group-hover:scale-100 transition-transform duration-1000 opacity-40"
               src={services[2].image}
               alt={services[2].title}
             />

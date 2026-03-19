@@ -94,7 +94,7 @@ const Footer = () => (
             {/* Brand */}
             <AnimatedContainer className="w-full max-w-xs space-y-4">
               <span className="text-2xl font-black font-headline tracking-tighter italic text-primary block">
-                AGENDIFY
+                AGF 
               </span>
               <p className="text-foreground/40 text-xs font-label leading-relaxed">
                 {homeContent.footer.tagline}
@@ -143,7 +143,7 @@ const Footer = () => (
 
           {/* TextHoverEffect — large AGENDIFY at bottom */}
           <div className="h-[180px] -mb-8 relative z-10">
-            <TextHoverEffect text="AGENDIFY" />
+            <TextHoverEffect text="DESIGN" />
           </div>
 
           {/* Bottom bar */}

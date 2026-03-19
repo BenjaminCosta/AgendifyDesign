@@ -66,7 +66,7 @@ const Projects = () => (
               >
                 <div className="overflow-hidden bg-surface-container">
                   <img
-                    className="w-full aspect-video object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-1000"
+                    className="w-full aspect-video object-cover group-hover:scale-105 transition-all duration-1000"
                     src={project.image}
                     alt={project.name}
                     loading="lazy"

@@ -34,15 +34,15 @@ const Header = () => {
 
   return (
     <header className="fixed top-4 left-1/2 -translate-x-1/2 w-[95%] max-w-7xl z-50">
-      <div className="px-6 py-3 bg-background/80 backdrop-blur-xl flex justify-between items-center shadow-[0px_0px_60px_0px_rgba(229,226,225,0.06)] border border-outline-variant/20">
+      <div className="relative px-6 py-3 bg-background/80 backdrop-blur-xl flex justify-between items-center shadow-[0px_0px_60px_0px_rgba(229,226,225,0.06)] border border-outline-variant/20">
 
         {/* Logo */}
         <a href="#" className="text-xl font-extrabold tracking-tighter text-primary italic font-headline uppercase flex-shrink-0">
-          Agendify Design
+          AGF Design
         </a>
 
         {/* Desktop — Tubelight nav */}
-        <div className="hidden md:flex">
+        <div className="hidden md:flex absolute left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2">
           <TubelightNavBar items={navItems} activeTab={activeTab} />
         </div>
 
