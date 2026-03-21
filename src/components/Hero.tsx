@@ -22,6 +22,8 @@ const Hero = () => (
         alt=""
         aria-hidden="true"
         className="w-full h-full object-cover opacity-40"
+        fetchPriority="high"
+        decoding="async"
       />
       <div className="absolute inset-0 bg-gradient-to-r from-background/90 via-background/82 to-background/55" />
       <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-transparent to-background/60" />

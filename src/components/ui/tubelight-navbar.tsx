@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import { LucideIcon } from "lucide-react";
+import type { ComponentType } from "react";
 import { cn } from "@/lib/utils";
 
 export interface TubelightNavItem {
   name: string;
   url: string;
-  icon: LucideIcon;
+  icon: ComponentType;
 }
 
 interface TubelightNavBarProps {

@@ -52,6 +52,8 @@ const Services = () => (
               className="absolute inset-0 w-full h-full object-cover scale-110 group-hover:scale-100 transition-transform duration-1000 opacity-40"
               src={services[0].image}
               alt={services[0].title}
+              loading="lazy"
+              decoding="async"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-background via-background/40 to-transparent" />
             <div className="relative h-full p-12 flex flex-col justify-end">
@@ -73,6 +75,8 @@ const Services = () => (
               className="absolute inset-0 w-full h-full object-cover scale-110 group-hover:scale-100 transition-transform duration-1000 opacity-40"
               src={services[1].image}
               alt={services[1].title}
+              loading="lazy"
+              decoding="async"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-background via-background/20 to-transparent" />
             <div className="relative h-full p-12 flex flex-col justify-end">
@@ -94,6 +98,8 @@ const Services = () => (
               className="absolute inset-0 w-full h-full object-cover scale-110 group-hover:scale-100 transition-transform duration-1000 opacity-40"
               src={services[2].image}
               alt={services[2].title}
+              loading="lazy"
+              decoding="async"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-background via-background/40 to-transparent" />
             <div className="relative h-full p-12 flex flex-col justify-end">

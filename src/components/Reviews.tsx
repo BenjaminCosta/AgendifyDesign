@@ -153,7 +153,7 @@ const Reviews = () => (
                 <span className="text-2xl font-extrabold text-foreground leading-none">5.0</span>
                 <StarRow count={5} />
               </div>
-              <span className="text-[11px] text-muted-foreground mt-0.5">6 reseñas verificadas</span>
+              <span className="text-[11px] text-muted-foreground mt-0.5">+20 reseñas verificadas</span>
             </div>
           </a>
         </div>
@@ -164,20 +164,7 @@ const Reviews = () => (
         {reviews.map((review, i) => (
           <ScrollReveal key={i} delay={i * 0.08} className="h-full">
             <div
-              className="h-full flex flex-col transition-all duration-300"
-              style={{
-                backgroundColor: "#ffffff",
-                border: "1px solid #e8e4f9",
-                boxShadow: "0 1px 4px rgba(91,71,224,0.06)",
-              }}
-              onMouseEnter={(e) => {
-                (e.currentTarget as HTMLDivElement).style.borderColor = `${W_PURPLE}60`;
-                (e.currentTarget as HTMLDivElement).style.boxShadow = `0 8px 24px rgba(91,71,224,0.12)`;
-              }}
-              onMouseLeave={(e) => {
-                (e.currentTarget as HTMLDivElement).style.borderColor = "#e8e4f9";
-                (e.currentTarget as HTMLDivElement).style.boxShadow = "0 1px 4px rgba(91,71,224,0.06)";
-              }}
+              className="h-full flex flex-col review-card"
             >
               {/* Project title strip */}
               <div

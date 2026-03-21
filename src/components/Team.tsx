@@ -52,6 +52,7 @@ const Team = () => (
                 src={member.image}
                 alt={member.name}
                 loading="lazy"
+                decoding="async"
               />
             </div>
             <div className="flex flex-1 flex-col">

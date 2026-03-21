@@ -64,6 +64,18 @@
   ::-webkit-scrollbar-thumb { background: #4edea3; }
 }
 
+/* ── Review cards — CSS hover (reemplaza JS onMouseEnter/Leave) ── */
+.review-card {
+  background-color: #ffffff;
+  border: 1px solid #e8e4f9;
+  box-shadow: 0 1px 4px rgba(91, 71, 224, 0.06);
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+.review-card:hover {
+  border-color: rgba(91, 71, 224, 0.38);
+  box-shadow: 0 8px 24px rgba(91, 71, 224, 0.12);
+}
+
 @layer utilities {
   .text-balance {
     text-wrap: balance;
