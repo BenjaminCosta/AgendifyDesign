@@ -1,6 +1,7 @@
 import team1 from "@/assets/team-1.png";
 import team2 from "@/assets/team-2.png";
 import team3 from "@/assets/team-3.png";
+import team4 from "@/assets/team-4.jpeg";
 import workanaPng from "@/assets/workana.png";
 import { homeContent } from "@/content/home";
 
@@ -23,6 +24,11 @@ const members = [
     image: team3,
     workana: "https://www.workana.com/freelancer/367d2b3ca0b4e2c21565ffd02193091f",
   },
+  {
+    name: "Santiago Jimenez",
+    role: "Seguridad & QA",
+    image: team4,
+  },
 ];
 
 const Team = () => (
@@ -38,12 +44,12 @@ const Team = () => (
         <p className="text-foreground/40 font-label text-xs uppercase tracking-widest">FUNDADORES</p>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-0 items-stretch">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-0 items-stretch">
         {members.map((member, i) => (
           <div
             key={member.name}
             className={`group h-full border border-outline-variant/10 p-12 hover:bg-surface-container transition-all duration-500 flex flex-col ${
-              i === 1 ? "md:border-y-0 md:border-x bg-surface-container/30" : ""
+              i === 1 ? "md:border-y-0 md:border-x lg:border-y lg:border-x-0 bg-surface-container/30" : ""
             }`}
           >
             <div className="mb-10 relative overflow-hidden aspect-square bg-surface-variant">
@@ -61,15 +67,17 @@ const Team = () => (
                 {member.role}
               </p>
             </div>
-            <a
-              href={member.workana}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 text-[10px] font-semibold uppercase tracking-widest text-foreground/40 hover:text-foreground/70 transition-colors duration-200 mt-6"
-            >
-              <img src={workanaPng} alt="Workana" className="w-4 h-4 object-contain opacity-60 group-hover:opacity-90 transition-opacity" />
-              Ver perfil en Workana
-            </a>
+            {member.workana ? (
+              <a
+                href={member.workana}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 text-[10px] font-semibold uppercase tracking-widest text-foreground/40 hover:text-foreground/70 transition-colors duration-200 mt-6"
+              >
+                <img src={workanaPng} alt="Workana" className="w-4 h-4 object-contain opacity-60 group-hover:opacity-90 transition-opacity" />
+                Ver perfil en Workana
+              </a>
+            ) : null}
           </div>
         ))}
       </div>

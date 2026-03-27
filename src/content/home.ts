@@ -83,7 +83,7 @@ export const homeContent = {
     label: "Equipo",
     title: "El equipo",
     subtitle:
-      "Tres especialistas que trabajan como uno. Sin intermediarios, sin juniors ocultos: trabajás directo con quien hace el trabajo.",
+      "Cuatro especialistas que trabajan como uno. Sin intermediarios, sin juniors ocultos: trabajás directo con quien hace el trabajo.",
   },
   contact: {
     label: "Contacto",
