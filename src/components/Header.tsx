@@ -24,18 +24,23 @@ const Header = () => {
   const [activeTab, setActiveTab] = useState("");
 
   useEffect(() => {
-    const onScroll = () => {
-      for (const item of [...navItems].reverse()) {
-        const id = item.url.replace("#", "");
-        const el = document.getElementById(id);
-        if (el && window.scrollY >= el.offsetTop - 120) {
-          setActiveTab(item.name);
-          break;
-        }
-      }
-    };
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const item = navItems.find((i) => i.url === `#${entry.target.id}`);
+            if (item) setActiveTab(item.name);
+          }
+        });
+      },
+      // fires when the section occupies the top 35% of the viewport
+      { rootMargin: "-30% 0px -65% 0px", threshold: 0 }
+    );
+    navItems.forEach(({ url }) => {
+      const el = document.getElementById(url.replace("#", ""));
+      if (el) observer.observe(el);
+    });
+    return () => observer.disconnect();
   }, []);
 
   return (
@@ -91,7 +96,7 @@ const Header = () => {
                     className="px-4 py-3 text-sm font-bold uppercase tracking-widest text-foreground/70 hover:text-primary hover:bg-surface-container transition-all duration-200 font-label flex items-center gap-3"
                     onClick={() => setMobileOpen(false)}
                   >
-                    <Icon size={14} />
+                    <Icon />
                     {item.name}
                   </a>
                 );

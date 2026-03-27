@@ -3,6 +3,7 @@ import webDesignImage from "@/assets/web-design.jpg";
 import serviceMobile from "@/assets/service-mobile.png";
 import { homeContent } from "@/content/home";
 import { MethodologyHoverSection } from "@/components/ui/feature-hover-section";
+import ScrollReveal from "@/components/ScrollReveal";
 
 const services = [
   {
@@ -31,7 +32,7 @@ const Services = () => (
     {/* ── Services ── */}
     <section className="py-32 bg-background relative" id="servicios">
       <div className="container mx-auto px-6">
-        <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-24 gap-8">
+        <ScrollReveal className="flex flex-col md:flex-row justify-between items-start md:items-end mb-24 gap-8">
           <div>
             <h2 className="text-5xl font-extrabold font-headline tracking-tighter mb-4 uppercase">
               QUÉ <span className="text-primary">HACEMOS</span>
@@ -39,7 +40,7 @@ const Services = () => (
             <p className="text-foreground/60 max-w-xl font-light">{homeContent.services.subtitle}</p>
           </div>
           <span className="font-label text-xs tracking-widest opacity-40">01 — 03</span>
-        </div>
+        </ScrollReveal>
 
         {/* Service cards — staggered layout */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-0">
@@ -59,7 +60,7 @@ const Services = () => (
             <div className="relative h-full p-12 flex flex-col justify-end">
               <span className="text-7xl font-black text-outline mb-4">{services[0].number}</span>
               <h3 className="text-2xl font-bold font-headline mb-4 uppercase">{services[0].title}</h3>
-              <p className="text-foreground/60 text-sm font-light mb-8 translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-[transform,opacity] duration-500">
+              <p className="text-foreground/60 text-sm font-light mb-8 sm:translate-y-4 sm:opacity-0 sm:group-hover:translate-y-0 sm:group-hover:opacity-100 transition-[transform,opacity] duration-500">
                 {services[0].description}
               </p>
               <div className="w-12 h-[2px] bg-primary group-hover:w-full transition-[width] duration-700" />
@@ -82,7 +83,7 @@ const Services = () => (
             <div className="relative h-full p-12 flex flex-col justify-end">
               <span className="text-7xl font-black text-outline mb-4">{services[1].number}</span>
               <h3 className="text-2xl font-bold font-headline mb-4 uppercase">{services[1].title}</h3>
-              <p className="text-foreground/60 text-sm font-light mb-8 translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-[transform,opacity] duration-500">
+              <p className="text-foreground/60 text-sm font-light mb-8 sm:translate-y-4 sm:opacity-0 sm:group-hover:translate-y-0 sm:group-hover:opacity-100 transition-[transform,opacity] duration-500">
                 {services[1].description}
               </p>
               <div className="w-12 h-[2px] bg-primary group-hover:w-full transition-[width] duration-700" />
@@ -105,7 +106,7 @@ const Services = () => (
             <div className="relative h-full p-12 flex flex-col justify-end">
               <span className="text-7xl font-black text-outline mb-4">{services[2].number}</span>
               <h3 className="text-2xl font-bold font-headline mb-4 uppercase">{services[2].title}</h3>
-              <p className="text-foreground/60 text-sm font-light mb-8 translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-[transform,opacity] duration-500">
+              <p className="text-foreground/60 text-sm font-light mb-8 sm:translate-y-4 sm:opacity-0 sm:group-hover:translate-y-0 sm:group-hover:opacity-100 transition-[transform,opacity] duration-500">
                 {services[2].description}
               </p>
               <div className="w-12 h-[2px] bg-primary group-hover:w-full transition-[width] duration-700" />

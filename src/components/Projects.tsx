@@ -25,6 +25,7 @@ import decoratre6 from "@/assets/decoratre/6.png";
 import project2 from "@/assets/project-2.png";
 import workanaPng from "@/assets/workana.png";
 import { homeContent } from "@/content/home";
+import ScrollReveal from "@/components/ScrollReveal";
 
 /* ── Types ────────────────────────────────────────────────── */
 type Project = {
@@ -429,7 +430,7 @@ const Projects = () => {
   return (
     <section className="py-32 bg-background" id="proyectos">
       <div className="container mx-auto px-6">
-        <div className="mb-24 flex flex-col items-center">
+        <ScrollReveal className="mb-24 flex flex-col items-center">
           <span className="font-label text-primary text-xs tracking-[0.6em] uppercase mb-4">
             {homeContent.projects.label.toUpperCase()}
           </span>
@@ -439,7 +440,7 @@ const Projects = () => {
           <p className="text-foreground/60 mt-6 max-w-xl text-center font-light">
             {homeContent.projects.subtitle}
           </p>
-        </div>
+        </ScrollReveal>
 
         {/* Alternating rows */}
         <div className="space-y-48">

@@ -16,10 +16,10 @@ const footerLinkGroups = [
   {
     label: "Proyectos",
     links: [
-      { title: "Couture E-commerce", href: "#proyectos" },
-      { title: "FitTrack Pro", href: "#proyectos" },
-      { title: "Gloser Booking", href: "#proyectos" },
-      { title: "SaaS Dashboard", href: "#proyectos" },
+      { title: "Decoratre", href: "#proyectos" },
+      { title: "BetCrowd", href: "#proyectos" },
+      { title: "Azul Profundo", href: "#proyectos" },
+      { title: "Axelscale", href: "#proyectos" },
     ],
   },
   {
@@ -43,10 +43,10 @@ const footerLinkGroups = [
 ];
 
 const socialLinks = [
-  { title: "Facebook", href: "#", icon: Facebook },
-  { title: "Instagram", href: "#", icon: Instagram },
-  { title: "Youtube", href: "#", icon: Youtube },
-  { title: "LinkedIn", href: "#", icon: Linkedin },
+  { title: "Facebook",  href: "https://www.facebook.com/agendifydesign",           icon: Facebook },
+  { title: "Instagram", href: "https://www.instagram.com/agendifydesign",          icon: Instagram },
+  { title: "Youtube",   href: "https://www.youtube.com/@agendifydesign",           icon: Youtube },
+  { title: "LinkedIn",  href: "https://www.linkedin.com/company/agendify-design",  icon: Linkedin },
 ];
 
 function AnimatedContainer({

@@ -45,7 +45,7 @@ const Hero = () => (
         </span>
 
         <h1
-          className="hero-anim max-w-6xl text-[clamp(2.8rem,7vw,6rem)] font-extrabold leading-[1.05] tracking-tighter font-headline mb-16 uppercase"
+          className="hero-anim max-w-6xl text-[clamp(2.8rem,7vw,6rem)] font-extrabold leading-[1.05] tracking-tighter font-headline mb-8 uppercase"
           style={{ animationDelay: "0.55s" }}
         >
           Tu negocio merece un{" "}
@@ -53,9 +53,7 @@ const Hero = () => (
           que venda
         </h1>
 
-        
-
-        <div className="hero-anim flex flex-wrap justify-center gap-6" style={{ animationDelay: "0.85s" }}>
+        <div className="hero-anim flex flex-wrap justify-center gap-6" style={{ animationDelay: "0.7s" }}>
           <RotatingBorderButton href={homeContent.hero.primaryCta.href} height="56px">
             {homeContent.hero.primaryCta.label} →
           </RotatingBorderButton>

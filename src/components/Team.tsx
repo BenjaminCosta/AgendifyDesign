@@ -4,6 +4,7 @@ import team3 from "@/assets/team-3.png";
 import team4 from "@/assets/team-4.jpeg";
 import workanaPng from "@/assets/workana.png";
 import { homeContent } from "@/content/home";
+import ScrollReveal from "@/components/ScrollReveal";
 
 const members = [
   {
@@ -34,7 +35,7 @@ const members = [
 const Team = () => (
   <section className="py-32 bg-background" id="equipo">
     <div className="container mx-auto px-6">
-      <div className="flex flex-col md:flex-row justify-between items-end mb-24 gap-8">
+      <ScrollReveal className="flex flex-col md:flex-row justify-between items-end mb-24 gap-8">
         <div className="max-w-xl">
           <h2 className="text-5xl font-extrabold font-headline tracking-tighter mb-6 uppercase">
             EL <span className="text-primary">EQUIPO</span>
@@ -42,16 +43,16 @@ const Team = () => (
           <p className="text-foreground/60 font-light">{homeContent.team.subtitle}</p>
         </div>
         <p className="text-foreground/40 font-label text-xs uppercase tracking-widest">FUNDADORES</p>
-      </div>
+      </ScrollReveal>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-0 items-stretch">
         {members.map((member, i) => (
-          <div
-            key={member.name}
-            className={`group h-full border border-outline-variant/10 p-12 hover:bg-surface-container transition-all duration-500 flex flex-col ${
-              i === 1 ? "md:border-y-0 md:border-x lg:border-y lg:border-x-0 bg-surface-container/30" : ""
-            }`}
-          >
+          <ScrollReveal key={member.name} delay={i * 0.1}>
+            <div
+              className={`group h-full border border-outline-variant/10 p-12 hover:bg-surface-container transition-all duration-500 flex flex-col ${
+                i === 1 ? "md:border-y-0 md:border-x lg:border-y lg:border-x-0 bg-surface-container/30" : ""
+              }`}
+            >
             <div className="mb-10 relative overflow-hidden aspect-square bg-surface-variant">
               <img
                 className="w-full h-full object-cover transition-all duration-700 group-hover:scale-110"
@@ -79,6 +80,7 @@ const Team = () => (
               </a>
             ) : null}
           </div>
+          </ScrollReveal>
         ))}
       </div>
     </div>
