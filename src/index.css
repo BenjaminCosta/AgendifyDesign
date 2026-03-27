@@ -221,12 +221,48 @@
   --border-color-2: hsla(155, 50%, 60%, 0.6);
 }
 
-/* Infinite scroll animation for brand carousel */
+/* ── Brand carousel – GPU-promoted infinite scroll ── */
 @keyframes scroll-left {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
+  0%   { transform: translate3d(0, 0, 0); }
+  100% { transform: translate3d(-50%, 0, 0); }
 }
 
 .animate-scroll-left {
   animation: scroll-left 30s linear infinite;
+  will-change: transform;
+  backface-visibility: hidden;
+}
+
+/* ── Hero – CSS-only entrance & float (replaces Framer Motion) ── */
+@keyframes shape-enter {
+  0%   { opacity: 0; transform: translateY(-150px) rotate(calc(var(--shape-rotate) - 15deg)); }
+  50%  { opacity: 1; }
+  100% { opacity: 1; transform: translateY(0) rotate(var(--shape-rotate)); }
+}
+
+.shape-enter {
+  opacity: 0;
+  animation: shape-enter 2.4s cubic-bezier(0.23, 0.86, 0.39, 0.96) forwards;
+  will-change: transform, opacity;
+}
+
+@keyframes shape-float {
+  0%, 100% { transform: translate3d(0, 0, 0); }
+  50%      { transform: translate3d(0, 15px, 0); }
+}
+
+.shape-float {
+  animation: shape-float 12s ease-in-out infinite;
+  will-change: transform;
+}
+
+@keyframes hero-fade-up {
+  from { opacity: 0; transform: translateY(30px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.hero-anim {
+  opacity: 0;
+  animation: hero-fade-up 1s cubic-bezier(0.25, 0.4, 0.25, 1) forwards;
+  will-change: transform, opacity;
 }

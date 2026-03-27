@@ -17,7 +17,7 @@ const techLogos = [
 const brands = [...techLogos, ...techLogos];
 
 const BrandCarousel = () => (
-  <section className="py-10 border-y border-outline-variant/20 overflow-hidden bg-surface-container-lowest">
+  <section className="py-10 border-y border-outline-variant/20 overflow-hidden bg-surface-container-lowest" style={{ contain: "content" }}>
     <div className="animate-scroll-left flex items-center gap-16 whitespace-nowrap w-max">
       {brands.map((brand, i) => (
         <div key={i} className="flex items-center gap-3 select-none" style={{ opacity: 0.5 }}>

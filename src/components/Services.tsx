@@ -46,10 +46,10 @@ const Services = () => (
           {/* Card 01 */}
           <div
             className="group relative overflow-hidden border-r border-outline-variant/10"
-            style={{ height: "600px" }}
+            style={{ height: "600px", contain: "layout paint" }}
           >
             <img
-              className="absolute inset-0 w-full h-full object-cover scale-110 group-hover:scale-100 transition-transform duration-1000 opacity-40"
+              className="absolute inset-0 w-full h-full object-cover scale-110 group-hover:scale-100 transition-transform duration-1000 opacity-40 will-change-transform"
               src={services[0].image}
               alt={services[0].title}
               loading="lazy"
@@ -59,20 +59,20 @@ const Services = () => (
             <div className="relative h-full p-12 flex flex-col justify-end">
               <span className="text-7xl font-black text-outline mb-4">{services[0].number}</span>
               <h3 className="text-2xl font-bold font-headline mb-4 uppercase">{services[0].title}</h3>
-              <p className="text-foreground/60 text-sm font-light mb-8 translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500">
+              <p className="text-foreground/60 text-sm font-light mb-8 translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-[transform,opacity] duration-500">
                 {services[0].description}
               </p>
-              <div className="w-12 h-[2px] bg-primary group-hover:w-full transition-all duration-700" />
+              <div className="w-12 h-[2px] bg-primary group-hover:w-full transition-[width] duration-700" />
             </div>
           </div>
 
           {/* Card 02 — elevated */}
           <div
             className="group relative overflow-hidden -mt-12 md:-mt-20 z-10 bg-surface-container shadow-2xl"
-            style={{ height: "700px" }}
+            style={{ height: "700px", contain: "layout paint" }}
           >
             <img
-              className="absolute inset-0 w-full h-full object-cover scale-110 group-hover:scale-100 transition-transform duration-1000 opacity-40"
+              className="absolute inset-0 w-full h-full object-cover scale-110 group-hover:scale-100 transition-transform duration-1000 opacity-40 will-change-transform"
               src={services[1].image}
               alt={services[1].title}
               loading="lazy"
@@ -82,20 +82,20 @@ const Services = () => (
             <div className="relative h-full p-12 flex flex-col justify-end">
               <span className="text-7xl font-black text-outline mb-4">{services[1].number}</span>
               <h3 className="text-2xl font-bold font-headline mb-4 uppercase">{services[1].title}</h3>
-              <p className="text-foreground/60 text-sm font-light mb-8 translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500">
+              <p className="text-foreground/60 text-sm font-light mb-8 translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-[transform,opacity] duration-500">
                 {services[1].description}
               </p>
-              <div className="w-12 h-[2px] bg-primary group-hover:w-full transition-all duration-700" />
+              <div className="w-12 h-[2px] bg-primary group-hover:w-full transition-[width] duration-700" />
             </div>
           </div>
 
           {/* Card 03 */}
           <div
             className="group relative overflow-hidden border-l border-outline-variant/10"
-            style={{ height: "600px" }}
+            style={{ height: "600px", contain: "layout paint" }}
           >
             <img
-              className="absolute inset-0 w-full h-full object-cover scale-110 group-hover:scale-100 transition-transform duration-1000 opacity-40"
+              className="absolute inset-0 w-full h-full object-cover scale-110 group-hover:scale-100 transition-transform duration-1000 opacity-40 will-change-transform"
               src={services[2].image}
               alt={services[2].title}
               loading="lazy"
@@ -105,10 +105,10 @@ const Services = () => (
             <div className="relative h-full p-12 flex flex-col justify-end">
               <span className="text-7xl font-black text-outline mb-4">{services[2].number}</span>
               <h3 className="text-2xl font-bold font-headline mb-4 uppercase">{services[2].title}</h3>
-              <p className="text-foreground/60 text-sm font-light mb-8 translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500">
+              <p className="text-foreground/60 text-sm font-light mb-8 translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-[transform,opacity] duration-500">
                 {services[2].description}
               </p>
-              <div className="w-12 h-[2px] bg-primary group-hover:w-full transition-all duration-700" />
+              <div className="w-12 h-[2px] bg-primary group-hover:w-full transition-[width] duration-700" />
             </div>
           </div>
         </div>

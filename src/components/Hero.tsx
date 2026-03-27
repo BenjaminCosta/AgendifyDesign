@@ -1,16 +1,7 @@
-import { motion } from "framer-motion";
 import { homeContent } from "@/content/home";
 import RotatingBorderButton from "@/components/ui/button-1";
 import { ElegantShape } from "@/components/ui/shape-landing-hero";
 import heroBg from "@/assets/hero2.avif";
-
-const ease = [0.25, 0.4, 0.25, 1] as [number, number, number, number];
-
-const fp = (i: number) => ({
-  initial: { opacity: 0, y: 30 },
-  animate: { opacity: 1, y: 0 },
-  transition: { duration: 1, delay: 0.4 + i * 0.15, ease },
-});
 
 const Hero = () => (
   <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-background" id="hero">
@@ -30,7 +21,7 @@ const Hero = () => (
     </div>
 
     {/* Subtle radial glow */}
-    <div className="absolute inset-0 bg-gradient-to-br from-primary/[0.04] via-transparent to-primary/[0.03] blur-3xl pointer-events-none z-[1]" />
+    <div className="absolute inset-0 bg-gradient-to-br from-primary/[0.04] via-transparent to-primary/[0.03] pointer-events-none z-[1]" />
 
     {/* Floating geometric shapes */}
     <div className="absolute inset-0 overflow-hidden pointer-events-none z-[1]">
@@ -49,22 +40,22 @@ const Hero = () => (
     <div className="relative z-10 container mx-auto px-6 text-center">
       <div className="max-w-6xl mx-auto flex flex-col items-center">
 
-        <motion.span {...fp(0)} className="font-label text-primary uppercase tracking-[0.4em] text-sm block mb-8">
+        <span className="hero-anim font-label text-primary uppercase tracking-[0.4em] text-sm block mb-8" style={{ animationDelay: "0.4s" }}>
           ESTABLECIDOS MMXXVI
-        </motion.span>
+        </span>
 
-        <motion.h1
-          {...fp(1)}
-          className="max-w-6xl text-[clamp(2.8rem,7vw,6rem)] font-extrabold leading-[1.05] tracking-tighter font-headline mb-16 uppercase"
+        <h1
+          className="hero-anim max-w-6xl text-[clamp(2.8rem,7vw,6rem)] font-extrabold leading-[1.05] tracking-tighter font-headline mb-16 uppercase"
+          style={{ animationDelay: "0.55s" }}
         >
           Tu negocio merece un{" "}
           <span className="text-outline">producto digital</span>{" "}
           que venda
-        </motion.h1>
+        </h1>
 
         
 
-        <motion.div {...fp(3)} className="flex flex-wrap justify-center gap-6">
+        <div className="hero-anim flex flex-wrap justify-center gap-6" style={{ animationDelay: "0.85s" }}>
           <RotatingBorderButton href={homeContent.hero.primaryCta.href} height="56px">
             {homeContent.hero.primaryCta.label} →
           </RotatingBorderButton>
@@ -84,7 +75,7 @@ const Hero = () => (
           >
             {homeContent.hero.secondaryCta.label}
           </RotatingBorderButton>
-        </motion.div>
+        </div>
 
       </div>
     </div>
