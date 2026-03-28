@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Instagram, Linkedin, Youtube, Facebook } from "lucide-react";
+import { Instagram, Linkedin, Phone, Mail } from "lucide-react";
 import { TextHoverEffect, FooterBackgroundGradient } from "@/components/ui/hover-footer";
 import { homeContent } from "@/content/home";
 
@@ -43,10 +43,10 @@ const footerLinkGroups = [
 ];
 
 const socialLinks = [
-  { title: "Facebook",  href: "https://www.facebook.com/agendifydesign",           icon: Facebook },
-  { title: "Instagram", href: "https://www.instagram.com/agendifydesign",          icon: Instagram },
-  { title: "Youtube",   href: "https://www.youtube.com/@agendifydesign",           icon: Youtube },
-  { title: "LinkedIn",  href: "https://www.linkedin.com/company/agendify-design",  icon: Linkedin },
+  { title: "Mail",      href: "mailto:agendify.business@gmail.com",                icon: Mail },
+  { title: "Instagram", href: "https://www.instagram.com/agendifyy/",              icon: Instagram },
+  { title: "Teléfono", href: "tel:+5491178486435",                                 icon: Phone },
+  { title: "LinkedIn",  href: "https://www.linkedin.com/company/agendifydesign/", icon: Linkedin },
 ];
 
 function AnimatedContainer({

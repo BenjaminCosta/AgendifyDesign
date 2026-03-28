@@ -1,5 +1,5 @@
-const whatsappNumber = "+5491123793882";
-const whatsappHref = "https://wa.me/5491123793882";
+const whatsappNumber = "+54 9 11 7848-6435";
+const whatsappHref = "https://wa.me/5491178486435";
 
 const FloatingWhatsApp = () => (
   <a
