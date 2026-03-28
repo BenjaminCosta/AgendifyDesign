@@ -1,33 +1,22 @@
 import uxImage from "@/assets/ux.jpg";
 import webDesignImage from "@/assets/web-design.jpg";
 import serviceMobile from "@/assets/service-mobile.png";
-import { homeContent } from "@/content/home";
 import { MethodologyHoverSection } from "@/components/ui/feature-hover-section";
 import ScrollReveal from "@/components/ScrollReveal";
+import { useLanguage } from "@/context/LanguageContext";
 
-const services = [
-  {
-    title: homeContent.services.items[0].title,
-    description: homeContent.services.items[0].description,
-    image: uxImage,
-    number: "01",
-  },
-  {
-    title: homeContent.services.items[1].title,
-    description: homeContent.services.items[1].description,
-    image: webDesignImage,
-    number: "02",
-  },
-  {
-    title: homeContent.services.items[2].title,
-    description: homeContent.services.items[2].description,
-    image: serviceMobile,
-    number: "03",
-  },
+/* Static per-card assets — never change with language */
+const servicesMeta = [
+  { image: uxImage,          number: "01" },
+  { image: webDesignImage,   number: "02" },
+  { image: serviceMobile,    number: "03" },
 ];
 
+const Services = () => {
+  const { t } = useLanguage();
+  const services = t.services.items.map((item, i) => ({ ...item, ...servicesMeta[i] }));
 
-const Services = () => (
+  return (
   <>
     {/* ── Services ── */}
     <section className="py-32 bg-background relative" id="servicios">
@@ -35,9 +24,9 @@ const Services = () => (
         <ScrollReveal className="flex flex-col md:flex-row justify-between items-start md:items-end mb-24 gap-8">
           <div>
             <h2 className="text-5xl font-extrabold font-headline tracking-tighter mb-4 uppercase">
-              QUÉ <span className="text-primary">HACEMOS</span>
+              {t.services.titleWord1} <span className="text-primary">{t.services.titleWord2}</span>
             </h2>
-            <p className="text-foreground/60 max-w-xl font-light">{homeContent.services.subtitle}</p>
+            <p className="text-foreground/60 max-w-xl font-light">{t.services.subtitle}</p>
           </div>
           <span className="font-label text-xs tracking-widest opacity-40">01 — 03</span>
         </ScrollReveal>
@@ -121,19 +110,20 @@ const Services = () => (
       <div className="container mx-auto px-6">
         <div className="max-w-3xl mb-12">
           <span className="font-label text-primary text-xs tracking-[0.6em] uppercase mb-4 block">
-            {homeContent.methodology.label.toUpperCase()}
+            {t.services.methodology.label.toUpperCase()}
           </span>
           <h2 className="text-5xl font-extrabold font-headline tracking-tighter mb-8 uppercase">
-            {homeContent.methodology.title}
+            {t.services.methodology.title}
           </h2>
           <p className="text-foreground/60 text-lg font-light leading-relaxed">
-            {homeContent.methodology.subtitle}
+            {t.services.methodology.subtitle}
           </p>
         </div>
-        <MethodologyHoverSection />
+        <MethodologyHoverSection items={t.services.methodology.items} />
       </div>
     </section>
   </>
-);
+  );
+};
 
 export default Services;

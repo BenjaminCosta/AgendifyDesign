@@ -8,51 +8,20 @@ const IconChartBar = () => <svg width="24" height="24" viewBox="0 0 24 24" fill=
 const IconRocket  = () => <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/><path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"/><path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"/></svg>;
 const IconHeadset = () => <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M3 11h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-5Zm0 0a9 9 0 1 1 18 0m0 0v5a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3Z"/></svg>;
 
-interface MethodologyItem {
+/* ── Icons by position (order matches methodology steps) ─── */
+const STEP_ICONS = [IconSearch, IconLayout2, IconCode, IconChartBar, IconRocket, IconHeadset];
+
+export interface MethodologyItem {
   title: string;
   description: string;
-  icon: React.ReactNode;
 }
-
-const methodologyItems: MethodologyItem[] = [
-  {
-    title: "Descubrimiento",
-    description: "Analizamos tu negocio, competencia y objetivos para entender exactamente qué necesitás.",
-    icon: <IconSearch size={24} />,
-  },
-  {
-    title: "Estrategia",
-    description: "Definimos la arquitectura de información, tecnologías y roadmap del proyecto.",
-    icon: <IconLayout2 size={24} />,
-  },
-  {
-    title: "Diseño & Prototipo",
-    description: "Creamos wireframes y prototipos de alta fidelidad para validar antes de programar.",
-    icon: <IconCode size={24} />,
-  },
-  {
-    title: "Desarrollo",
-    description: "Programamos con código limpio, optimizado y escalable usando las mejores tecnologías.",
-    icon: <IconChartBar size={24} />,
-  },
-  {
-    title: "Lanzamiento",
-    description: "Deploy en producción con testing exhaustivo, SEO técnico y auditoría de performance.",
-    icon: <IconRocket size={24} />,
-  },
-  {
-    title: "Soporte Continuo",
-    description: "Mantenimiento, actualizaciones y optimizaciones para que tu producto siga creciendo.",
-    icon: <IconHeadset size={24} />,
-  },
-];
 
 const MethodologyFeature = ({
   title,
   description,
   icon,
   index,
-}: MethodologyItem & { index: number }) => (
+}: MethodologyItem & { icon: React.ReactNode; index: number }) => (
   <div
     className={cn(
       "flex flex-col lg:border-r py-10 relative group/feature border-outline-variant/15",
@@ -87,12 +56,19 @@ const MethodologyFeature = ({
   </div>
 );
 
-export function MethodologyHoverSection() {
+interface MethodologyHoverSectionProps {
+  items: MethodologyItem[];
+}
+
+export function MethodologyHoverSection({ items }: MethodologyHoverSectionProps) {
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 relative z-10 max-w-7xl mx-auto">
-      {methodologyItems.map((item, index) => (
-        <MethodologyFeature key={item.title} {...item} index={index} />
-      ))}
+      {items.map((item, index) => {
+        const Icon = STEP_ICONS[index] ?? IconSearch;
+        return (
+          <MethodologyFeature key={item.title} {...item} icon={<Icon />} index={index} />
+        );
+      })}
     </div>
   );
 }

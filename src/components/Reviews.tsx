@@ -1,5 +1,6 @@
 import workanaPng from "@/assets/workana.png";
 import ScrollReveal from "./ScrollReveal";
+import { useLanguage } from "@/context/LanguageContext";
 
 /* ── Workana brand purple ─────────────────────────────────── */
 const W_PURPLE = "#5b47e0";
@@ -117,7 +118,10 @@ const reviews: Review[] = [
 
 
 /* ── Component ────────────────────────────────────────────── */
-const Reviews = () => (
+const Reviews = () => {
+  const { t } = useLanguage();
+
+  return (
   <section id="testimonios" className="py-24 md:py-36 relative bg-background">
     <div className="container mx-auto px-6">
 
@@ -125,16 +129,16 @@ const Reviews = () => (
       <ScrollReveal>
         <div className="flex items-center gap-4 mb-4">
           <div className="w-12 h-px bg-primary" />
-          <span className="text-xs font-medium tracking-[0.2em] uppercase text-primary">Testimonios</span>
+          <span className="text-xs font-medium tracking-[0.2em] uppercase text-primary">{t.reviews.sectionLabel}</span>
         </div>
 
         <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-8 mb-16">
           <div className="max-w-xl">
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-foreground">
-              Reseñas reales de clientes
+              {t.reviews.title}
             </h2>
             <p className="mt-4 text-muted-foreground text-sm leading-relaxed">
-              Opiniones verificadas en Workana. Cada reseña corresponde a un proyecto completado y publicado en la plataforma, sin edición.
+              {t.reviews.subtitle}
             </p>
           </div>
 
@@ -153,7 +157,7 @@ const Reviews = () => (
                 <span className="text-2xl font-extrabold text-foreground leading-none">5.0</span>
                 <StarRow count={5} />
               </div>
-              <span className="text-[11px] text-muted-foreground mt-0.5">+20 reseñas verificadas</span>
+              <span className="text-[11px] text-muted-foreground mt-0.5">{t.reviews.verifiedCount}</span>
             </div>
           </a>
         </div>
@@ -175,7 +179,7 @@ const Reviews = () => (
                   className="text-[10px] font-bold tracking-[0.18em] uppercase mb-2"
                   style={{ color: W_PURPLE }}
                 >
-                  Proyecto completado
+                  {t.reviews.completedProject}
                 </p>
                 <h3 className="text-[13px] font-bold text-gray-800 leading-snug line-clamp-2">
                   {review.projectTitle}
@@ -235,7 +239,7 @@ const Reviews = () => (
                     style={{ backgroundColor: "#22c55e" }}
                   />
                   <span className="text-[11px] text-gray-400">
-                    Verificado ·{" "}
+                    {t.reviews.verified} ·{" "}
                     <span className="font-semibold text-gray-600">{review.freelancerName}</span>
                   </span>
                 </div>
@@ -246,7 +250,7 @@ const Reviews = () => (
                   className="flex items-center gap-1 text-[11px] font-bold hover:underline underline-offset-2 transition-opacity hover:opacity-70"
                   style={{ color: W_PURPLE }}
                 >
-                  Ver en Workana
+                  {t.reviews.viewOnWorkana}
                   <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
                     <path strokeLinecap="round" strokeLinejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
                   </svg>
@@ -259,6 +263,7 @@ const Reviews = () => (
 
     </div>
   </section>
-);
+  );
+};
 
 export default Reviews;

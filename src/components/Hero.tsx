@@ -1,9 +1,12 @@
-import { homeContent } from "@/content/home";
+import { useLanguage } from "@/context/LanguageContext";
 import RotatingBorderButton from "@/components/ui/button-1";
 import { ElegantShape } from "@/components/ui/shape-landing-hero";
 import heroBg from "@/assets/hero2.avif";
 
-const Hero = () => (
+const Hero = () => {
+  const { t } = useLanguage();
+
+  return (
   <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-background" id="hero">
 
     {/* Background image */}
@@ -48,17 +51,17 @@ const Hero = () => (
           className="hero-anim max-w-6xl text-[clamp(2.8rem,7vw,6rem)] font-extrabold leading-[1.05] tracking-tighter font-headline mb-8 uppercase"
           style={{ animationDelay: "0.55s" }}
         >
-          Tu negocio merece un{" "}
-          <span className="text-outline">producto digital</span>{" "}
-          que venda
+          {t.hero.titleBefore}{" "}
+          <span className="text-outline">{t.hero.titleHighlight}</span>{" "}
+          {t.hero.titleAfter}
         </h1>
 
         <div className="hero-anim flex flex-wrap justify-center gap-6" style={{ animationDelay: "0.7s" }}>
-          <RotatingBorderButton href={homeContent.hero.primaryCta.href} height="56px">
-            {homeContent.hero.primaryCta.label} →
+          <RotatingBorderButton href="#contacto" height="56px">
+            {t.hero.primaryCta} →
           </RotatingBorderButton>
           <RotatingBorderButton
-            href={homeContent.hero.secondaryCta.href}
+            href="#proyectos"
             height="56px"
             style={
               {
@@ -71,13 +74,14 @@ const Hero = () => (
               } as React.CSSProperties
             }
           >
-            {homeContent.hero.secondaryCta.label}
+            {t.hero.secondaryCta}
           </RotatingBorderButton>
         </div>
 
       </div>
     </div>
   </section>
-);
+  );
+};
 
 export default Hero;

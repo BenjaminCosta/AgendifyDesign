@@ -4,7 +4,7 @@ import Header from "@/components/Header";
 import Hero from "@/components/Hero";
 import BrandCarousel from "@/components/BrandCarousel";
 import Services from "@/components/Services";
-import { homeContent } from "@/content/home";
+import { useLanguage } from "@/context/LanguageContext";
 
 const Projects   = lazy(() => import("@/components/Projects"));
 const Reviews    = lazy(() => import("@/components/Reviews"));
@@ -23,25 +23,24 @@ const FadeIn = ({ children }: { children: React.ReactNode }) => (
   </motion.div>
 );
 
-const metaTagDefinitions = [
-  { attr: "name", key: "description", value: homeContent.metadata.description },
-  { attr: "property", key: "og:title", value: homeContent.metadata.ogTitle },
-  { attr: "property", key: "og:description", value: homeContent.metadata.ogDescription },
-];
-
 const Index = () => {
-  useEffect(() => {
-    document.title = homeContent.metadata.title;
+  const { t } = useLanguage();
 
-    metaTagDefinitions.forEach(({ attr, key, value }) => {
+  useEffect(() => {
+    document.title = t.metadata.title;
+
+    const metaDefs = [
+      { attr: "name",     key: "description",    value: t.metadata.description },
+      { attr: "property", key: "og:title",        value: t.metadata.ogTitle },
+      { attr: "property", key: "og:description",  value: t.metadata.ogDescription },
+    ];
+
+    metaDefs.forEach(({ attr, key, value }) => {
       const selector = `meta[${attr}="${key}"]`;
       const metaTag = document.querySelector<HTMLMetaElement>(selector);
-
-      if (metaTag) {
-        metaTag.content = value;
-      }
+      if (metaTag) metaTag.content = value;
     });
-  }, []);
+  }, [t]);
 
   return (
     <div className="min-h-screen bg-background">

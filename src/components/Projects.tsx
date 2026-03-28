@@ -22,10 +22,9 @@ import decoratre2 from "@/assets/decoratre/2.png";
 import decoratre3 from "@/assets/decoratre/3.png";
 import decoratre5 from "@/assets/decoratre/5.png";
 import decoratre6 from "@/assets/decoratre/6.png";
-import project2 from "@/assets/project-2.png";
 import workanaPng from "@/assets/workana.png";
-import { homeContent } from "@/content/home";
 import ScrollReveal from "@/components/ScrollReveal";
+import { useLanguage } from "@/context/LanguageContext";
 
 /* ── Types ────────────────────────────────────────────────── */
 type Project = {
@@ -42,79 +41,48 @@ type Project = {
   liveUrl?: string;
 };
 
-/* ── Project data ─────────────────────────────────────────── */
-const projects: Project[] = [
+/* ── Static per-project assets + metadata (never translated) ─ */
+const projectsMeta = [
   {
-    name: "Decoratre - E-commerce Premium de Muebles Artesanales",
-    category: "E-commerce & Branding · Shopify",
     year: "2026",
-    description:
-      "Tienda en produccion con catalogo completo, experiencia de compra optimizada para el cliente premium, y una identidad digital coherente con el posicionamiento fisico de la marca.",
-    objective:
-      "Decoratre es una marca de muebles artesanales premium con showroom en Santiago y mercado en Mexico. Tenian el producto, la identidad y los clientes, pero su presencia online no estaba a la altura de lo que vendian.",
-    solution:
-      "Disenamos y desarrollamos una tienda Shopify completamente a medida con arquitectura de colecciones clara, secciones editoriales para contar la historia de la marca, navegacion dual para desktop y mobile, newsletter segmentado, pagina de showroom y una guia de compra que reduce dudas antes del contacto.",
     stack: ["Shopify", "Liquid", "CSS personalizado", "Figma"],
     coverImage: decoratre1,
     images: [decoratre1, decoratre2, decoratre3, decoratre5, decoratre6],
-    mediaLayout: "desktop",
+    mediaLayout: "desktop" as const,
     liveUrl: "https://decoratre-2.myshopify.com/",
   },
   {
-    name: "BetCrowd - App Mobile de Predicciones Deportivas",
-    category: "Mobile App · React Native",
     year: "2026",
-    description:
-      "App publicada en Google Play Store con sistema de torneos privados, predicciones, ranking en tiempo real y balance de deudas entre participantes.",
-    objective:
-      "Las apuestas entre amigos siempre existieron en grupos de WhatsApp, planillas de Excel o de palabra. El problema es que no hay registro, no hay cuotas justas, y al final del torneo nadie recuerda bien quien le debe cuanto a quien.",
-    solution:
-      "Disenamos y desarrollamos BetCrowd desde cero en React Native con Expo para Android e iOS. Permite crear torneos privados, invitar amigos con un link directo, hacer predicciones sobre cualquier evento deportivo o amateur, y calcular cuotas peer-to-peer entre participantes. El diferenciador central es un balance ficticio con registro de deudas inspirado en Splitwise, para que la app muestre exactamente quien le debe cuanto a quien sin mover dinero real dentro de la plataforma.",
     stack: ["React Native", "Expo", "Firebase", "EAS Build"],
     coverImage: betcrowd0,
     images: [betcrowd1, betcrowd2, betcrowd3, betcrowd4],
-    mediaLayout: "mobile",
+    mediaLayout: "mobile" as const,
   },
   {
-    name: "Azul Profundo - Sitio Web & E-commerce Escuela de Buceo",
-    category: "Web & E-commerce · React",
     year: "2026",
-    description:
-      "Sitio en producción con catálogo completo de cursos, e-commerce funcional, y posicionamiento SEO local activo.",
-    objective:
-      "Azul Profundo es una escuela de buceo certificada con cursos para todos los niveles. Tenían una operación consolidada con alumnos recurrentes, pero sin presencia digital a la altura: sin sitio propio, sin forma de mostrar los cursos ordenadamente, y sin canal para vender online.",
-    solution:
-      "Diseñamos y desarrollamos un sitio web completo con e-commerce integrado en React + Vite. La arquitectura está centrada en los cursos: cada uno tiene su propia página con descripción completa, requisitos previos, modalidad y precio. El e-commerce permite comprar directamente desde el sitio, eliminando la fricción del proceso de inscripción manual. Además implementamos un objeto coursesData centralizado, botón de WhatsApp, integración de redes sociales y SEO técnico local para posicionar búsquedas de buceo en Buenos Aires.",
     stack: ["React", "Vite", "CSS", "SEO técnico", "Vercel"],
     coverImage: azulProfundo1,
     images: [
-      azulProfundo1,
-      azulProfundo2,
-      azulProfundo3,
-      azulProfundo4,
-      azulProfundo5,
-      azulProfundo6,
-      azulProfundo7,
-      azulProfundo8,
+      azulProfundo1, azulProfundo2, azulProfundo3, azulProfundo4,
+      azulProfundo5, azulProfundo6, azulProfundo7, azulProfundo8,
     ],
-    mediaLayout: "desktop",
+    mediaLayout: "desktop" as const,
     liveUrl: "https://buceoazulprofundo.ar/",
   },
   {
-    name: "Axelscale - Plataforma de Cursos & Comunidad",
-    category: "Web App · Plataforma Educativa",
     year: "2026",
-    description:
-      "Plataforma en producción con alumnos activos, gestión de contenido autónoma vía Notion, y una experiencia de usuario que convierte una comunidad informal en un producto digital profesional.",
-    objective:
-      "Axelscale es una comunidad educativa de reventa online con audiencia, alumnos activos y un programa estructurado de 50 días. El desafío era dejar atrás herramientas dispersas y construir un lugar propio donde centralizar cursos, accesos y experiencia de alumno.",
-    solution:
-      "Diseñamos y desarrollamos una plataforma completa en Next.js con Firebase, autenticación con roles y acceso cerrado por contraseña. El contenido de módulos y lecciones se gestiona desde Notion sin tocar código, mientras que el dashboard del alumno organiza progreso, acceso a los 3 módulos del programa, plan de 50 días, integración con Discord y soporte continuo desde la plataforma.",
     stack: ["Next.js", "Firebase", "Notion API", "Autenticación con roles", "Vercel"],
     coverImage: axelscale1,
     images: [axelscale1, axelscale2, axelscale3, axelscale4],
-    mediaLayout: "desktop",
+    mediaLayout: "desktop" as const,
   },
+];
+
+/* ── Static Workana profile URLs ─────────────────────────── */
+const workanaProfileUrls = [
+  { name: "Benjamín Costa",     url: "https://www.workana.com/freelancer/6525bdbaa3b696218eb9e38608f3ea03" },
+  { name: "Tobías Bonomo",      url: "https://www.workana.com/freelancer/e45ac26bd141723720414cf2513d2a8f" },
+  { name: "Matías Bellinzona",  url: "https://www.workana.com/freelancer/367d2b3ca0b4e2c21565ffd02193091f" },
 ];
 
 /* ── Carousel ─────────────────────────────────────────────── */
@@ -267,6 +235,7 @@ const ProjectModal = ({
   project: Project;
   onClose: () => void;
 }) => {
+  const { t } = useLanguage();
   const isWideMediaCase = project.mediaLayout === "desktop" && project.images.length > 1;
   const isMobileShowcase = project.mediaLayout === "mobile";
 
@@ -326,7 +295,7 @@ const ProjectModal = ({
             <button
               onClick={onClose}
               className="w-8 h-8 flex items-center justify-center border border-white/10 hover:border-white/30 text-white/50 hover:text-white transition-all duration-200"
-              aria-label="Cerrar"
+              aria-label={t.projects.modal.close}
             >
               <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                 <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
@@ -355,7 +324,7 @@ const ProjectModal = ({
             {/* Objetivo */}
             <div>
               <span className="text-[10px] font-bold tracking-[0.2em] uppercase text-white/30 block mb-2">
-                Objetivo
+                {t.projects.modal.objective}
               </span>
               <p className="text-white/70 text-sm leading-relaxed">{project.objective}</p>
             </div>
@@ -363,7 +332,7 @@ const ProjectModal = ({
             {/* Solución */}
             <div>
               <span className="text-[10px] font-bold tracking-[0.2em] uppercase text-white/30 block mb-2">
-                Solución
+                {t.projects.modal.solution}
               </span>
               <p className="text-white/70 text-sm leading-relaxed">{project.solution}</p>
             </div>
@@ -371,7 +340,7 @@ const ProjectModal = ({
             {/* Stack */}
             <div>
               <span className="text-[10px] font-bold tracking-[0.2em] uppercase text-white/30 block mb-3">
-                Stack tecnológico
+                {t.projects.modal.stack}
               </span>
               <div className="flex flex-wrap gap-2">
                 {project.stack.map((tech) => (
@@ -395,7 +364,7 @@ const ProjectModal = ({
                   className="inline-flex items-center gap-4 group/live"
                 >
                   <span className="font-label font-bold text-xs uppercase tracking-widest text-white">
-                    Ver sitio online
+                    {t.projects.modal.viewSite}
                   </span>
                   <span className="text-primary group-hover/live:translate-x-2 transition-transform inline-block text-lg">
                     →
@@ -408,7 +377,7 @@ const ProjectModal = ({
                   className="inline-flex items-center gap-4 group/cta"
                 >
                   <span className="font-label font-bold text-xs uppercase tracking-widest text-white">
-                    Hablemos de tu proyecto
+                    {t.projects.modal.talkProject}
                   </span>
                   <span className="text-primary group-hover/cta:translate-x-2 transition-transform inline-block text-lg">
                     →
@@ -425,20 +394,26 @@ const ProjectModal = ({
 
 /* ── Main section ─────────────────────────────────────────── */
 const Projects = () => {
+  const { t } = useLanguage();
   const [active, setActive] = useState<Project | null>(null);
+
+  const projects: Project[] = t.projects.items.map((item, i) => ({
+    ...item,
+    ...projectsMeta[i],
+  }));
 
   return (
     <section className="py-32 bg-background" id="proyectos">
       <div className="container mx-auto px-6">
         <ScrollReveal className="mb-24 flex flex-col items-center">
           <span className="font-label text-primary text-xs tracking-[0.6em] uppercase mb-4">
-            {homeContent.projects.label.toUpperCase()}
+            {t.projects.label.toUpperCase()}
           </span>
           <h2 className="text-6xl font-extrabold font-headline tracking-tighter text-center uppercase">
-            ALGUNOS DE NUESTROS PROYECTOS
+            {t.projects.title}
           </h2>
           <p className="text-foreground/60 mt-6 max-w-xl text-center font-light">
-            {homeContent.projects.subtitle}
+            {t.projects.subtitle}
           </p>
         </ScrollReveal>
 
@@ -483,7 +458,7 @@ const Projects = () => {
                     {/* Hover overlay */}
                     <div className="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-all duration-500 flex items-center justify-center">
                       <span className="opacity-0 group-hover:opacity-100 transition-all duration-300 translate-y-2 group-hover:translate-y-0 text-[11px] font-bold tracking-[0.2em] uppercase text-white border border-white/30 px-5 py-2.5 backdrop-blur-sm">
-                        Vista rápida
+                        {t.projects.modal.quickView}
                       </span>
                     </div>
                   </div>
@@ -514,7 +489,7 @@ const Projects = () => {
                       className="inline-flex items-center group/live"
                     >
                       <span className="font-label font-bold text-xs uppercase tracking-widest mr-4">
-                        Ver sitio online
+                        {t.projects.modal.viewSite}
                       </span>
                       <span className="text-primary group-hover/live:translate-x-2 transition-transform inline-block">
                         →
@@ -526,7 +501,7 @@ const Projects = () => {
                       className="inline-flex items-center group/link"
                     >
                       <span className="font-label font-bold text-xs uppercase tracking-widest mr-4">
-                        Ver Caso de Estudio
+                        {t.projects.modal.caseStudy}
                       </span>
                       <span className="text-primary group-hover/link:translate-x-2 transition-transform inline-block">
                         →
@@ -543,23 +518,22 @@ const Projects = () => {
         <div className="mt-32 border-t border-border pt-16 flex flex-col md:flex-row md:items-center md:justify-between gap-10">
           <div className="max-w-lg">
             <span className="text-[10px] font-bold tracking-[0.25em] uppercase text-primary block mb-3">
-              Historial verificado
+              {t.projects.workana.label}
             </span>
             <p className="text-2xl md:text-3xl font-extrabold tracking-tight uppercase leading-tight text-foreground">
-              Esto es solo una parte.<br />
-              <span className="text-foreground/40">El resto está en Workana.</span>
+              {t.projects.workana.title1}<br />
+              <span className="text-foreground/40">{t.projects.workana.title2}</span>
             </p>
             <p className="mt-4 text-sm text-muted-foreground leading-relaxed max-w-sm">
-              Más de 3 años de proyectos completados, reseñas reales y reputación construida entrega a entrega. Sin filtros.
+              {t.projects.workana.description}
             </p>
           </div>
 
           <div className="flex flex-col gap-3 flex-shrink-0">
-            {[
-              { name: "Benjamín Costa", role: "UX/UI & Branding", url: "https://www.workana.com/freelancer/6525bdbaa3b696218eb9e38608f3ea03" },
-              { name: "Tobías Bonomo",  role: "Full-Stack", url: "https://www.workana.com/freelancer/e45ac26bd141723720414cf2513d2a8f" },
-              { name: "Matías Bellinzona", role: "Marketing & Estrategia", url: "https://www.workana.com/freelancer/367d2b3ca0b4e2c21565ffd02193091f" },
-            ].map((p) => (
+            {workanaProfileUrls.map((p, i) => ({
+              ...p,
+              role: t.projects.workana.profiles[i]?.role ?? "",
+            })).map((p) => (
               <a
                 key={p.url}
                 href={p.url}

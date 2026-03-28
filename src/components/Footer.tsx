@@ -1,46 +1,7 @@
 import { motion } from "framer-motion";
 import { Instagram, Linkedin, Phone, Mail } from "lucide-react";
 import { TextHoverEffect, FooterBackgroundGradient } from "@/components/ui/hover-footer";
-import { homeContent } from "@/content/home";
-
-const footerLinkGroups = [
-  {
-    label: "Servicios",
-    links: [
-      { title: "Diseño UX/UI & Branding", href: "#servicios" },
-      { title: "Desarrollo Web", href: "#servicios" },
-      { title: "Apps Mobile", href: "#servicios" },
-      { title: "Metodología", href: "#servicios" },
-    ],
-  },
-  {
-    label: "Proyectos",
-    links: [
-      { title: "Decoratre", href: "#proyectos" },
-      { title: "BetCrowd", href: "#proyectos" },
-      { title: "Azul Profundo", href: "#proyectos" },
-      { title: "Axelscale", href: "#proyectos" },
-    ],
-  },
-  {
-    label: "Equipo",
-    links: [
-      { title: "Benjamin Costa Mihanovich", href: "#equipo" },
-      { title: "Tobias Bonomo", href: "#equipo" },
-      { title: "Matias Bellinzona", href: "#equipo" },
-      { title: "Unirse al equipo", href: "#contacto" },
-    ],
-  },
-  {
-    label: "Contacto",
-    links: [
-      { title: "agendify.business@gmail.com", href: "mailto:agendify.business@gmail.com" },
-      { title: "Buenos Aires", href: "#" },
-      { title: "Madrid", href: "#" },
-      { title: "Iniciar proyecto", href: "#contacto" },
-    ],
-  },
-];
+import { useLanguage } from "@/context/LanguageContext";
 
 const socialLinks = [
   { title: "Mail",      href: "mailto:agendify.business@gmail.com",                icon: Mail },
@@ -71,7 +32,11 @@ function AnimatedContainer({
   );
 }
 
-const Footer = () => (
+const Footer = () => {
+  const { t } = useLanguage();
+  const footerLinkGroups = t.footer.groups;
+
+  return (
   /* Sticky reveal footer — outer sets height/clipPath, inner is fixed */
   <footer
     className="relative w-full"
@@ -97,7 +62,7 @@ const Footer = () => (
                 Agendify Design
               </span>
               <p className="text-foreground/40 text-xs font-label leading-relaxed">
-                {homeContent.footer.tagline}
+                {t.footer.tagline}
               </p>
               <div className="flex gap-2 pt-2">
                 {socialLinks.map((link) => (
@@ -148,13 +113,14 @@ const Footer = () => (
 
           {/* Bottom bar */}
           <div className="relative z-10 flex flex-col items-center justify-between gap-2 border-t border-outline-variant/10 pt-3 text-[10px] font-label text-foreground/30 uppercase tracking-widest md:flex-row">
-            <p>© 2026 Agendify Design — Diseño y desarrollo que genera resultados.</p>
+            <p>{t.footer.copyright}</p>
             <p>Buenos Aires / Global</p>
           </div>
         </div>
       </div>
     </div>
   </footer>
-);
+  );
+};
 
 export default Footer;

@@ -3,46 +3,32 @@ import team2 from "@/assets/team-2.png";
 import team3 from "@/assets/team-3.png";
 import team4 from "@/assets/team-4.jpeg";
 import workanaPng from "@/assets/workana.png";
-import { homeContent } from "@/content/home";
 import ScrollReveal from "@/components/ScrollReveal";
+import { useLanguage } from "@/context/LanguageContext";
 
-const members = [
-  {
-    name: "Benjamin Costa Mihanovich",
-    role: "Diseño UX/UI & Producto",
-    image: team1,
-    workana: "https://www.workana.com/freelancer/6525bdbaa3b696218eb9e38608f3ea03",
-  },
-  {
-    name: "Tobias Bonomo",
-    role: "Desarrollo Full-Stack & Arquitectura",
-    image: team2,
-    workana: "https://www.workana.com/freelancer/e45ac26bd141723720414cf2513d2a8f",
-  },
-  {
-    name: "Matias Bellinzona",
-    role: "Estrategia Digital & Growth",
-    image: team3,
-    workana: "https://www.workana.com/freelancer/367d2b3ca0b4e2c21565ffd02193091f",
-  },
-  {
-    name: "Santiago Jimenez",
-    role: "Seguridad & QA",
-    image: team4,
-  },
+/* Static per-member assets + workana URLs — never change */
+const membersMeta = [
+  { image: team1, workana: "https://www.workana.com/freelancer/6525bdbaa3b696218eb9e38608f3ea03" },
+  { image: team2, workana: "https://www.workana.com/freelancer/e45ac26bd141723720414cf2513d2a8f" },
+  { image: team3, workana: "https://www.workana.com/freelancer/367d2b3ca0b4e2c21565ffd02193091f" },
+  { image: team4, workana: null },
 ];
 
-const Team = () => (
+const Team = () => {
+  const { t } = useLanguage();
+  const members = t.team.members.map((m, i) => ({ ...m, ...membersMeta[i] }));
+
+  return (
   <section className="py-32 bg-background" id="equipo">
     <div className="container mx-auto px-6">
       <ScrollReveal className="flex flex-col md:flex-row justify-between items-end mb-24 gap-8">
         <div className="max-w-xl">
           <h2 className="text-5xl font-extrabold font-headline tracking-tighter mb-6 uppercase">
-            EL <span className="text-primary">EQUIPO</span>
+            {t.team.titleWord1} <span className="text-primary">{t.team.titleWord2}</span>
           </h2>
-          <p className="text-foreground/60 font-light">{homeContent.team.subtitle}</p>
+          <p className="text-foreground/60 font-light">{t.team.subtitle}</p>
         </div>
-        <p className="text-foreground/40 font-label text-xs uppercase tracking-widest">FUNDADORES</p>
+        <p className="text-foreground/40 font-label text-xs uppercase tracking-widest">{t.team.foundersLabel}</p>
       </ScrollReveal>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-0 items-stretch">
@@ -76,7 +62,7 @@ const Team = () => (
                 className="inline-flex items-center gap-2 text-[10px] font-semibold uppercase tracking-widest text-foreground/40 hover:text-foreground/70 transition-colors duration-200 mt-6"
               >
                 <img src={workanaPng} alt="Workana" className="w-4 h-4 object-contain opacity-60 group-hover:opacity-90 transition-opacity" />
-                Ver perfil en Workana
+                {t.team.viewProfile}
               </a>
             ) : null}
           </div>
@@ -85,6 +71,7 @@ const Team = () => (
       </div>
     </div>
   </section>
-);
+  );
+};
 
 export default Team;

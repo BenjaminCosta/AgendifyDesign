@@ -1,8 +1,9 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { homeContent } from "@/content/home";
+import { useLanguage } from "@/context/LanguageContext";
 
 const CTASection = () => {
+  const { t } = useLanguage();
   const [form, setForm] = useState({ name: "", email: "", message: "" });
   const [sent, setSent] = useState(false);
   const [sending, setSending] = useState(false);
@@ -46,14 +47,14 @@ const CTASection = () => {
           {/* Left — copy */}
           <div>
             <h2 className="text-6xl font-extrabold font-headline tracking-tighter mb-12 uppercase leading-none">
-              ¿Tenés un <br />
-              <span className="text-primary">proyecto en mente?</span>
+              {t.contact.titleLine1} <br />
+              <span className="text-primary">{t.contact.titleLine2}</span>
             </h2>
             <p className="text-foreground/60 font-light text-lg mb-16 max-w-sm">
-              {homeContent.contact.subtitle}
+              {t.contact.subtitle}
             </p>
             <div className="space-y-6 font-label uppercase tracking-widest text-xs">
-              {homeContent.contact.bullets.map((bullet) => (
+              {t.contact.bullets.map((bullet) => (
                 <p key={bullet} className="flex items-center gap-4">
                   <span className="text-primary">•</span>
                   {bullet}
@@ -114,13 +115,13 @@ const CTASection = () => {
                   className="space-y-3"
                 >
                   <p className="text-[10px] font-bold tracking-[0.25em] uppercase text-primary">
-                    Mensaje recibido
+                    {t.contact.successBadge}
                   </p>
                   <h3 className="text-3xl font-extrabold font-headline uppercase tracking-tight leading-tight">
-                    {homeContent.contact.successTitle}
+                    {t.contact.successTitle}
                   </h3>
                   <p className="text-foreground/50 text-sm leading-relaxed max-w-xs">
-                    {homeContent.contact.successText}
+                    {t.contact.successText}
                   </p>
                 </motion.div>
 
@@ -133,7 +134,7 @@ const CTASection = () => {
                 >
                   <span className="w-1.5 h-1.5 rounded-full bg-primary" />
                   <span className="text-[11px] font-label uppercase tracking-widest text-muted-foreground">
-                    Te respondemos en menos de 24 hs
+                    {t.contact.successFooter}
                   </span>
                 </motion.div>
               </div>
@@ -141,11 +142,11 @@ const CTASection = () => {
               <form onSubmit={handleSubmit} className="space-y-12">
                 <div className="relative">
                   <label className="absolute -top-4 left-0 text-[10px] font-label text-primary tracking-[0.3em] uppercase">
-                    Identidad
+                    {t.contact.formLabelName}
                   </label>
                   <input
                     type="text"
-                    placeholder="NOMBRE Y APELLIDO"
+                    placeholder={t.contact.placeholderName}
                     required
                     value={form.name}
                     onChange={(e) => setForm({ ...form, name: e.target.value })}
@@ -154,11 +155,11 @@ const CTASection = () => {
                 </div>
                 <div className="relative">
                   <label className="absolute -top-4 left-0 text-[10px] font-label text-primary tracking-[0.3em] uppercase">
-                    Contacto
+                    {t.contact.formLabelEmail}
                   </label>
                   <input
                     type="email"
-                    placeholder="EMAIL@EMPRESA.COM"
+                    placeholder={t.contact.placeholderEmail}
                     required
                     value={form.email}
                     onChange={(e) => setForm({ ...form, email: e.target.value })}
@@ -167,10 +168,10 @@ const CTASection = () => {
                 </div>
                 <div className="relative">
                   <label className="absolute -top-4 left-0 text-[10px] font-label text-primary tracking-[0.3em] uppercase">
-                    Manifesto
+                    {t.contact.formLabelMessage}
                   </label>
                   <textarea
-                    placeholder="DESCRIPCIÓN DEL PROYECTO"
+                    placeholder={t.contact.placeholderMessage}
                     required
                     rows={4}
                     value={form.message}
@@ -180,7 +181,7 @@ const CTASection = () => {
                 </div>
                 {error && (
                   <p className="text-destructive text-xs font-label tracking-widest uppercase -mt-6">
-                    Error al enviar. Intentá de nuevo o escribinos directo al mail.
+                    {t.contact.errorMessage}
                   </p>
                 )}
                 <button
@@ -188,7 +189,7 @@ const CTASection = () => {
                   disabled={sending}
                   className="w-full bg-primary-container text-on-primary py-6 font-bold uppercase tracking-[0.4em] text-xs hover:bg-primary transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
                 >
-                  {sending ? "ENVIANDO..." : "ENVIAR BRIEF"}
+                  {sending ? t.contact.sending : t.contact.submit}
                 </button>
               </form>
             )}
