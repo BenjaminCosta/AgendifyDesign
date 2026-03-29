@@ -13,13 +13,16 @@ export function ElegantShape({
 }: {
   className?: string;
   delay?: number;
-  width?: number;
   mobileWidth?: number;
   height?: number;
   mobileHeight?: number;
   rotate?: number;
   gradient?: string;
+  width?: number;
 }) {
+  // shape-float debe arrancar sólo DESPUÉS de que shape-enter termine (1.2s + delay propio)
+  const floatDelay = delay + 1.2;
+
   return (
     <div
       className={cn("absolute shape-enter", className)}
@@ -38,6 +41,7 @@ export function ElegantShape({
             "--shape-height": `${mobileHeight ?? height}px`,
             "--shape-width-md": `${width}px`,
             "--shape-height-md": `${height}px`,
+            animationDelay: `${floatDelay}s`,
           } as CSSProperties
         }
       >

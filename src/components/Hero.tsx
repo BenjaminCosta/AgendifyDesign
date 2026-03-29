@@ -7,7 +7,7 @@ const Hero = () => {
   const { t } = useLanguage();
 
   return (
-  <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-background" id="hero">
+  <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-background" id="hero" style={{ contain: "layout paint" }}>
 
     {/* Background image */}
     <div className="absolute inset-0 z-0">
@@ -43,20 +43,20 @@ const Hero = () => {
     <div className="relative z-10 container mx-auto px-6 text-center">
       <div className="max-w-6xl mx-auto flex flex-col items-center">
 
-        <span className="hero-anim font-label text-primary uppercase tracking-[0.4em] text-sm block mb-8" style={{ animationDelay: "0.4s" }}>
+        <span className="hero-anim font-label text-primary uppercase tracking-[0.4em] text-sm block mb-8" style={{ animationDelay: "0.2s" }}>
           ESTABLECIDOS MMXXVI
         </span>
 
         <h1
           className="hero-anim max-w-6xl text-[clamp(2.8rem,7vw,6rem)] font-extrabold leading-[1.05] tracking-tighter font-headline mb-8 uppercase"
-          style={{ animationDelay: "0.55s" }}
+          style={{ animationDelay: "0.35s" }}
         >
           {t.hero.titleBefore}{" "}
           <span className="text-outline">{t.hero.titleHighlight}</span>{" "}
           {t.hero.titleAfter}
         </h1>
 
-        <div className="hero-anim flex flex-wrap justify-center gap-6" style={{ animationDelay: "0.7s" }}>
+        <div className="hero-anim flex flex-wrap justify-center gap-6" style={{ animationDelay: "0.5s" }}>
           <RotatingBorderButton href="#contacto" height="56px">
             {t.hero.primaryCta} →
           </RotatingBorderButton>

@@ -23,6 +23,12 @@ export interface ProjectItem {
   solution: string;
 }
 
+export interface ReviewItem {
+  projectTitle: string;
+  time: string;
+  text: string;
+}
+
 export interface TeamMember {
   name: string;
   role: string;
@@ -103,6 +109,7 @@ export interface TranslationSchema {
     verified: string;
     viewOnWorkana: string;
     verifiedCount: string;
+    items: ReviewItem[];
   };
   team: {
     titleWord1: string;
@@ -308,6 +315,38 @@ export const translations: Record<Lang, TranslationSchema> = {
       verified: "Verificado",
       viewOnWorkana: "Ver en Workana",
       verifiedCount: "+20 reseñas verificadas",
+      items: [
+        {
+          projectTitle: "Diseño Web Profesional para Consultoría Gastronómica en Carrd.co",
+          time: "Hace 9 meses",
+          text: "Benjamín ha sido de gran ayuda para hacer la web de mi consultoría. Le estoy muy agradecido por el trato y el trabajo realizado. Sin lugar a dudas, recomiendo que cualquier persona que lo necesite lo contrate porque quedará absolutamente satisfecho con la labor de Benjamín.",
+        },
+        {
+          projectTitle: "Desarrollo de Tienda Shopify para Dropshipping con Best Buy",
+          time: "Hace 3 meses",
+          text: "Lo recomiendo 1000%; siempre estuvo dispuesto a ayudar más de lo que se había propuesto. Solventó problemas que no eran nada fáciles y lo hizo muy rápido. Tuvo una paciencia increíble conmigo, estoy encantada con su trabajo, lo recomiendo y de seguro haré muchos más trabajos con él.",
+        },
+        {
+          projectTitle: "Diseño y Desarrollo Web One Page Responsivo para Atria One Seguros con Integración Zoho CRM",
+          time: "Hace 2 semanas",
+          text: "Excelente experiencia trabajar con Tobías, comunicación rápida, fácil y directa. Siempre disponible para ayudar durante el proyecto. Hace seguimiento al avance del proyecto en forma proactiva y presta apoyo post producción. Todo Ok!",
+        },
+        {
+          projectTitle: "Activación segura por QR + perfil editable para mascotas (WordPress)",
+          time: "Hace 2 meses",
+          text: "Excelente trabajo. Tobías fue muy claro, ordenado y profesional durante todo el proyecto. Cumplió con lo acordado, tuvo muy buena disposición para realizar ajustes, explicó bien el funcionamiento del plugin y mantuvo una comunicación constante y transparente.\n\nEl resultado final quedó muy bien y acorde a lo solicitado. Sin duda volvería a trabajar con él y lo recomiendo totalmente.",
+        },
+        {
+          projectTitle: "Desarrollo backend para plataforma web de reservas de cancha de fútbol",
+          time: "Hace un año",
+          text: "Mateo ha echo un excelente trabajo, se nota su responsabilidad y profesionalismo. Ha despejado todas mis dudas y me ayudó en cosas que no entendía siendo muy claro. Superó mis expectativas, volvería a trabajar con él.",
+        },
+        {
+          projectTitle: "Desarrollo a la medida",
+          time: "Hace un año",
+          text: "Entiende rápido el proceso o lo que se le explica, tiene una buena actitud, es excelente programando.\nNosotros lo recomendaríamos.",
+        },
+      ],
     },
     team: {
       titleWord1: "EL",
@@ -560,6 +599,38 @@ export const translations: Record<Lang, TranslationSchema> = {
       verified: "Verified",
       viewOnWorkana: "View on Workana",
       verifiedCount: "+20 verified reviews",
+      items: [
+        {
+          projectTitle: "Professional Web Design for Gastronomic Consultancy on Carrd.co",
+          time: "9 months ago",
+          text: "Benjamín was a great help in building my consultancy website. I'm very grateful for his treatment and the work done. I would definitely recommend that anyone who needs it hire him, because they will be absolutely satisfied with Benjamín's work.",
+        },
+        {
+          projectTitle: "Shopify Store Development for Dropshipping with Best Buy",
+          time: "3 months ago",
+          text: "I recommend him 1000%; he was always willing to help beyond what was agreed. He solved problems that were far from easy and did it very quickly. He had incredible patience with me, I'm delighted with his work, I recommend him and I will definitely work with him again.",
+        },
+        {
+          projectTitle: "Responsive One-Page Web Design & Development for Atria One Insurance with Zoho CRM Integration",
+          time: "2 weeks ago",
+          text: "Excellent experience working with Tobías — quick, easy, and direct communication. Always available to help during the project. He proactively follows up on progress and provides post-production support. All great!",
+        },
+        {
+          projectTitle: "Secure QR Activation + Editable Pet Profile (WordPress)",
+          time: "2 months ago",
+          text: "Excellent work. Tobías was very clear, organized, and professional throughout the project. He delivered what was agreed, was very willing to make adjustments, explained the plugin's functionality well, and maintained constant and transparent communication.\n\nThe final result turned out very well and in line with what was requested. I would definitely work with him again and highly recommend him.",
+        },
+        {
+          projectTitle: "Backend Development for a Football Court Booking Web Platform",
+          time: "A year ago",
+          text: "Mateo did an excellent job — his responsibility and professionalism really show. He cleared all my doubts and helped me understand things I didn't, being very clear. He exceeded my expectations and I would work with him again.",
+        },
+        {
+          projectTitle: "Custom Development",
+          time: "A year ago",
+          text: "He quickly understands the process or whatever is explained to him, has a great attitude, and is an excellent programmer.\nWe would recommend him.",
+        },
+      ],
     },
     team: {
       titleWord1: "THE",

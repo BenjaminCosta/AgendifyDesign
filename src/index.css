@@ -242,7 +242,7 @@
 
 .shape-enter {
   opacity: 0;
-  animation: shape-enter 2.4s cubic-bezier(0.23, 0.86, 0.39, 0.96) forwards;
+  animation: shape-enter 1.2s cubic-bezier(0.23, 0.86, 0.39, 0.96) forwards;
   will-change: transform, opacity;
 }
 
@@ -253,16 +253,17 @@
 
 .shape-float {
   animation: shape-float 12s ease-in-out infinite;
+  /* delay pasado inline desde ElegantShape para que empiece tras el enter */
   will-change: transform;
 }
 
 @keyframes hero-fade-up {
-  from { opacity: 0; transform: translateY(30px); }
-  to   { opacity: 1; transform: translateY(0); }
+  from { opacity: 0; transform: translate3d(0, 24px, 0); }
+  to   { opacity: 1; transform: translate3d(0, 0, 0); }
 }
 
 .hero-anim {
   opacity: 0;
-  animation: hero-fade-up 1s cubic-bezier(0.25, 0.4, 0.25, 1) forwards;
+  animation: hero-fade-up 0.65s cubic-bezier(0.25, 0.4, 0.25, 1) forwards;
   will-change: transform, opacity;
 }
